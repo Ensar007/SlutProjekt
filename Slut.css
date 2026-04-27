@@ -1,0 +1,54 @@
+:root {
+    --brand-teal: #007A8A; 
+}
+
+/* Hamburgarknappen */
+.custom-hamburger {
+    background: var(--brand-teal);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.custom-hamburger span {
+    display: block;
+    width: 22px;
+    height: 3px;
+    background: white;
+}
+
+/* Home-knappen */
+.btn-active-teal {
+    background-color: var(--brand-teal) !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 8px 20px !important;
+}
+
+/* Den svarta bild-rutan */
+.placeholder-image {
+    background-color: black;
+    height: 400px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+/* Justering för mobil: Stapla länkar snyggt när man öppnar menyn */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background: white;
+        width: 100%;
+        padding: 20px;
+        z-index: 1000;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+}
