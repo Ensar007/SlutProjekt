@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Restaurang</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light-custom">
+
+    <header class="bg-white border-bottom custom-border-bottom py-3 px-4 shadow-sm">
+        <div class="container-fluid d-flex align-items-center justify-content-between px-0">
+            
+            <div class="d-flex align-items-center gap-3">
+                <button class="custom-hamburger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="cart.html" class="cart-link" style="text-decoration: none; font-size: 1.5rem;">
+                    🛒
+                </a>
+            </div>
+            
+            <div class="nav-section text-center d-none d-md-block">
+                <h1 class="h4 mb-0 fw-bold fst-italic">
+                    (Namn på vår resturang)
+                </h1>
+            </div>
+
+            <nav class="d-flex align-items-center justify-content-end gap-4 fw-medium nav-section">
+                <a href="#" class="text-dark text-decoration-none d-none d-lg-block">Home</a>
+                <a href="#" class="text-dark text-decoration-none d-none d-lg-block">Food</a>
+                <a href="#" class="text-dark text-decoration-none d-none d-lg-block">About us</a>
+                <button class="btn btn-teal fst-italic px-3">Login</button>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main class="container mt-5 pt-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                
+                <div class="d-flex align-items-center justify-content-center gap-3 mb-5">
+                    <div class="border border-dark border-2 rounded-circle d-flex align-items-center justify-content-center user-icon-box">
+                       <i class="bi bi-box-arrow-in-right fs-1 text-dark"></i>
+                    </div>
+                    <h2 class="fs-5 fw-normal mb-0">Enter your info to log in to your account</h2>
+                </div>
+
+                <form class="px-md-5">
+                    <div class="mb-4">
+                        <label for="email" class="form-label fs-5">Email</label>
+                        <input type="email" class="form-control form-control-lg rounded-pill border-secondary px-4" id="email">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="form-label fs-5">Password:</label>
+                        <input type="password" class="form-control form-control-lg rounded-pill border-secondary px-4" id="password">
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <p class="fs-5 mb-1">Dont have an account?</p>
+                        <a href="#" class="text-decoration-none fs-4 custom-pink-link">sign in</a>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

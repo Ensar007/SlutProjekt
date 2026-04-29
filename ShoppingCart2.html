@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varukorg - Vår Restaurang</title>
+    <link rel="stylesheet" href="shoppingcart2.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <a href="shoppingcart2.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo">🛒</div>
+                </a>
+                <h1 class="restaurant-name">(Namn på vår resturang)</h1>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="Slut.html">Home</a>
+                <a href="index.html">Food</a>
+                <a href="#">About us</a>
+                <a href="#" class="login-btn">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <div class="container">
+            <h2 class="page-title">Din Varukorg</h2>
+            
+            <div class="cart-layout">
+                <section class="cart-items-section">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Produkt</th>
+                                <th>Pris</th>
+                                <th>Antal</th>
+                                <th>Totalt</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-body">
+                            <tr class="cart-item">
+                                <td class="product-info">
+                                    <div class="product-img-placeholder">🍕</div>
+                                    <div>
+                                        <p class="product-name">Margherita Pizza</p>
+                                        <p class="product-meta">Standard storlek</p>
+                                    </div>
+                                </td>
+                                <td class="unit-price" data-price="129">129 kr</td>
+                                <td>
+                                    <div class="quantity-picker">
+                                        <button class="qty-btn minus">-</button>
+                                        <span class="qty-value">1</span>
+                                        <button class="qty-btn plus">+</button>
+                                    </div>
+                                </td>
+                                <td class="subtotal-price">129 kr</td>
+                                <td><button class="remove-item">✕</button></td>
+                            </tr>
+                            
+                            <tr class="cart-item">
+                                <td class="product-info">
+                                    <div class="product-img-placeholder">🍔</div>
+                                    <div>
+                                        <p class="product-name">Classic Burger</p>
+                                        <p class="product-meta">+ Extra Bacon</p>
+                                    </div>
+                                </td>
+                                <td class="unit-price" data-price="145">145 kr</td>
+                                <td>
+                                    <div class="quantity-picker">
+                                        <button class="qty-btn minus">-</button>
+                                        <span class="qty-value">2</span>
+                                        <button class="qty-btn plus">+</button>
+                                    </div>
+                                </td>
+                                <td class="subtotal-price">290 kr</td>
+                                <td><button class="remove-item">✕</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <aside class="checkout-sidebar">
+                    <div class="summary-card">
+                        <h3>Orderöversikt</h3>
+                        <div class="summary-row">
+                            <span>Delsumma</span>
+                            <span id="cart-subtotal">419 kr</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Leveransavgift</span>
+                            <span id="cart-delivery">39 kr</span>
+                        </div>
+                        <hr>
+                        <div class="summary-row total">
+                            <span>Totalt att betala</span>
+                            <span id="cart-total">458 kr</span>
+                        </div>
+
+                        <div class="payment-selection">
+                            <h4>Betalsätt</h4>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" checked>
+                                <div class="option-content">
+                                    <span class="payment-label">Swish</span>
+                                    <span class="payment-desc">Betala direkt med mobilen</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment">
+                                <div class="option-content">
+                                    <span class="payment-label">Betalkort</span>
+                                    <span class="payment-desc">Visa, Mastercard, Maestro</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <button id="checkout-btn" class="place-order-btn">Slutför köp (458 kr)</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cartBody = document.getElementById('cart-body');
+            const deliveryFee = 39; // Fast avgift för leverans
+
+            // Funktion för att räkna ut och uppdatera alla priser
+            function updateTotals() {
+                let subtotal = 0;
+                
+                // Gå igenom varje rad i varukorgen
+                document.querySelectorAll('.cart-item').forEach(item => {
+                    // Hämta pris (från data-price attributet) och antal
+                    const price = parseFloat(item.querySelector('.unit-price').getAttribute('data-price'));
+                    const qty = parseInt(item.querySelector('.qty-value').textContent);
+                    const itemTotal = price * qty;
+                    
+                    // Uppdatera radens totalpris
+                    item.querySelector('.subtotal-price').textContent = itemTotal + ' kr';
+                    
+                    // Lägg till i den totala delsumman
+                    subtotal += itemTotal;
+                });
+                
+                // Om varukorgen är tom = ingen leveransavgift
+                const currentDelivery = subtotal > 0 ? deliveryFee : 0;
+                const total = subtotal + currentDelivery;
+                
+                // Uppdatera HTML-elementen till höger
+                document.getElementById('cart-subtotal').textContent = subtotal + ' kr';
+                document.getElementById('cart-delivery').textContent = currentDelivery + ' kr';
+                document.getElementById('cart-total').textContent = total + ' kr';
+                document.getElementById('checkout-btn').textContent = `Slutför köp (${total} kr)`;
+
+                // Inaktivera köpknappen om korgen är tom
+                if(total === 0) {
+                    document.getElementById('checkout-btn').disabled = true;
+                    document.getElementById('checkout-btn').style.opacity = "0.5";
+                    document.getElementById('checkout-btn').textContent = `Varukorgen är tom`;
+                } else {
+                    document.getElementById('checkout-btn').disabled = false;
+                    document.getElementById('checkout-btn').style.opacity = "1";
+                }
+            }
+
+            // Lyssna på klick i tabellen (Event Delegation)
+            cartBody.addEventListener('click', (e) => {
+                
+                // Om man klickar på X (ta bort)
+                if (e.target.classList.contains('remove-item')) {
+                    e.target.closest('.cart-item').remove();
+                    updateTotals();
+                }
+                
+                // Om man klickar på Plus (+)
+                if (e.target.classList.contains('plus')) {
+                    let qtySpan = e.target.previousElementSibling;
+                    qtySpan.textContent = parseInt(qtySpan.textContent) + 1;
+                    updateTotals();
+                }
+                
+                // Om man klickar på Minus (-)
+                if (e.target.classList.contains('minus')) {
+                    let qtySpan = e.target.nextElementSibling;
+                    let currentQty = parseInt(qtySpan.textContent);
+                    
+                    if (currentQty > 1) {
+                        qtySpan.textContent = currentQty - 1;
+                    } else {
+                        // Om antalet är 1 och man trycker minus, ta bort produkten
+                        e.target.closest('.cart-item').remove();
+                    }
+                    updateTotals();
+                }
+            });
+            
+            // Kör kalkylatorn en första gång när sidan laddas
+            updateTotals(); 
+        });
+    </script>
+</body>
+</html>

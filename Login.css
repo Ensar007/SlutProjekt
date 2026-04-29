@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- HEADER (Strukturerad för att matcha din andra kod) --- */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 30px;
+    border-bottom: 2px solid #00c9db; /* Den blåa linjen under menyn */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.logo {
+    font-size: 30px;
+}
+
+.restaurant-name {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.login-btn {
+    background-color: #007a87;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+/* --- LOGIN SEKTION (Tillbaka till originaldesignen) --- */
+.login-container {
+    margin-top: 60px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.user-icon {
+    font-size: 50px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-header h2 {
+    font-weight: normal;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.input-group {
+    width: 80%;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #999;
+    border-radius: 25px; /* Rundade hörn för de ovala inmatningsfälten */
+    outline: none;
+    font-size: 1rem;
+}
+
+.signup-section {
+    margin-top: 10px;
+}
+
+.signup-section p {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.signup-link {
+    color: #d1a7a7; /* Rosa färgen på "sign in" */
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+.custom-hamburger {
+    background: var(--brand-teal);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.custom-hamburger span {
+    display: block;
+    width: 22px;
+    height: 3px;
+    background: white;
+}
+
+.btn-active-teal {
+    background-color: var(--brand-teal) !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 8px 20px !important;
+}
