@@ -1,0 +1,143 @@
+/* Grundläggande återställning */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.gray-bg {
+    background-color: #f4f5f5;
+}
+
+/* Header-styling */
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hamburger-menu {
+    background-color: #007782;
+    color: white;
+    border: none;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* HÄR ÄR ÄNDRINGEN FÖR BILDLOGGAN */
+.logo {
+    height: 20px; 
+    width: auto;  
+    object-fit: contain;
+}
+
+.restaurant-name {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Navigeringslänkar */
+.header-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.login-btn {
+    background-color: #007782;
+    color: white !important;
+    padding: 6px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* Formulär-container */
+.signup-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    text-align: center;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: normal;
+    font-size: 26px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Layout för formuläret */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.half-width {
+    flex: 1;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.signup-form label {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #000;
+}
+
+.signup-form input {
+    background-color: #dedede;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 15px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Responsivitet */
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+        gap: 25px;
+    }
+}

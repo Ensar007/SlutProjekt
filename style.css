@@ -42,9 +42,10 @@ header {
 }
 
 .logo {
-    font-size: 28px;
+    height: 40px; /* Ändra detta för att göra din logga större eller mindre */
+    width: auto;  /* Håller rätt proportioner på bilden */
+    object-fit: contain;
 }
-
 .restaurant-name {
     font-size: 16px;
     font-style: italic;
