@@ -39,7 +39,7 @@
     border-radius: 12px;
 }
 
-/* Justering för mobil: Stapla länkar snyggt när man öppnar menyn */
+/* ändring för mobil */
 @media (max-width: 991px) {
     .navbar-collapse {
         position: absolute;

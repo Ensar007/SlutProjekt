@@ -1,0 +1,149 @@
+/* Grundläggande återställning */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f5f5; /* Ljusgrå bakgrund enligt bilden */
+    color: #000;
+}
+
+/* Header-styling */
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hamburger-menu {
+    background-color: #007782; /* Mörk turkos */
+    color: white;
+    border: none;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+}
+
+.restaurant-name {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Navigeringslänkar */
+.header-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.header-right a.active {
+    background-color: #007782;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+}
+
+/* Huvudinnehåll */
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-style: italic;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+/* Filtreringsknappar */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background-color: #ffffff;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 13px;
+}
+
+.filter-btn.active {
+    background-color: #007782;
+    color: white;
+}
+
+/* Rutnät (Grid) för korten */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Tomma vita kort */
+.menu-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 120px;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+/* Responsiv design för mindre skärmar */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    .filter-buttons {
+        flex-wrap: wrap;
+    }
+}
