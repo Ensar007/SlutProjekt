@@ -3,44 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurang Projekt</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Slut.css">
+    <title>Home - Vår Restaurang</title>
+    <!-- Om du använder Bootstrap i Slut.html -->
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css)" rel="stylesheet">
+    <style>
+        :root { --brand-teal: #007A8A; }
+        body { background-color: #f4f5f5; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        
+        /* Header & Meny */
+        .global-header { background-color: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 1px solid #ddd; position: relative; z-index: 1000; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        
+        /* Hamburgarknappen från din Slut.css */
+        .custom-hamburger { background: var(--brand-teal); border: none; padding: 8px 10px; border-radius: 4px; display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
+        .custom-hamburger span { display: block; width: 22px; height: 3px; background: white; }
+        
+        .logo-cart { font-size: 28px; text-decoration: none; color: inherit; }
+        .restaurant-name { font-size: 18px; font-style: italic; font-weight: bold; color: #000; margin: 0; }
+        
+        .header-right { display: flex; gap: 10px; align-items: center; }
+        .header-right a { text-decoration: none; color: #000; font-size: 14px; font-weight: bold; font-style: italic; padding: 8px 20px; border-radius: 8px; transition: 0.2s; }
+        
+        /* Den aktiva knappen från din Slut.css */
+        .btn-active-teal { background-color: var(--brand-teal) !important; color: white !important; font-style: normal !important; }
+        
+        /* Mobilmeny */
+        .mobile-nav { display: none; flex-direction: column; background-color: #ffffff; width: 100%; position: absolute; top: 100%; left: 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
+        .mobile-nav a { padding: 15px 30px; text-decoration: none; color: #000; font-weight: bold; border-bottom: 1px solid #eee; }
+        @media (max-width: 991px) { .header-right { display: none; } }
+
+        /* Den svarta bild-rutan från din Slut.css */
+        .placeholder-image { background-color: black; height: 400px; width: 100%; max-width: 900px; margin: 60px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-style: italic; font-size: 2rem; }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            
-            <div class="d-flex align-items-center gap-3">
-                <button class="custom-hamburger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span></span><span></span><span></span>
-                </button>
-                <a href="images.png" class="cart-link" style="text-decoration: none; font-size: 1.5rem;">
-                    
-                </a>
-            </div>
-
-            <a class="navbar-brand fw-bold m-0" href="#">(Namn på vår restaurang)</a>
-
-            <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
-                <ul class="navbar-nav d-flex gap-3 mt-3 mt-lg-0">
-                    <li class="nav-item"><a class="nav-link btn-active-teal" href="#">Home</a></li>
-
-                    <li class="nav-item"><a class="nav-link fw-semibold" href="index.html">Food</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold" href="#">About us</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold" href="sid">Login</a></li>
-                </ul>
-            </div>
+    <header class="global-header">
+        <div class="header-left">
+            <button class="custom-hamburger" onclick="const m=document.getElementById('mobile-menu'); m.style.display=m.style.display==='flex'?'none':'flex';">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="ShoppingCart2.html" class="logo-cart">🛒</a>
+            <h1 class="restaurant-name">(Namn på vår resturang)</h1>
         </div>
-    </nav>
+        
+        <nav class="header-right">
+            <!-- AKTIV PÅ HOME -->
+            <a href="Slut.html" class="btn-active-teal">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="Login.html" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
+        </nav>
 
-    <main class="container my-5 text-center">
-        <div class="placeholder-image d-flex align-items-center justify-content-center">
-            <span class="fst-italic fs-2 text-white">Bild</span>
+        <div id="mobile-menu" class="mobile-nav">
+            <a href="Slut.html" style="color: var(--brand-teal);">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="ShoppingCart2.html">Kundvagn</a>
+            <a href="Login.html">Login</a>
         </div>
+    </header>
+
+    <main style="padding: 0 20px;">
+        <div class="placeholder-image">Bild</div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

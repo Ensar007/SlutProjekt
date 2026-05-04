@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Vår Restaurang</title>
+    <title>Create account - Vår Restaurang</title>
     <style>
         :root { --brand-teal: #007A8A; }
         body { background-color: #f4f5f5; margin: 0; padding: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
@@ -19,23 +19,21 @@
         .header-right { display: flex; gap: 10px; align-items: center; }
         .header-right a { text-decoration: none; color: #000; font-size: 14px; font-weight: bold; font-style: italic; padding: 8px 20px; border-radius: 8px; transition: 0.2s; }
         
-        /* När Login är aktiv är den ifylld precis som boxen */
-        .header-right a.btn-active-teal { background-color: var(--brand-teal) !important; color: white !important; font-style: normal !important; }
+        /* Eftersom vi är på "Skapa konto" låter vi Login vara aktiv eftersom det hör ihop */
+        .btn-active-teal { background-color: var(--brand-teal) !important; color: white !important; font-style: normal !important; }
         
         .mobile-nav { display: none; flex-direction: column; background-color: #ffffff; width: 100%; position: absolute; top: 100%; left: 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
         .mobile-nav a { padding: 15px 30px; text-decoration: none; color: #000; font-weight: bold; border-bottom: 1px solid #eee; }
         @media (max-width: 991px) { .header-right { display: none; } }
 
-        /* Sidans innehåll (Login) */
-        .login-container { display: flex; flex-direction: column; align-items: center; padding-top: 60px; flex: 1; }
-        .login-header { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 40px; }
-        .user-icon { font-size: 35px; border: 2px solid #333; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; }
-        .login-title { font-weight: normal; font-size: 1.3rem; color: #333; max-width: 250px; }
-        .login-form { display: flex; flex-direction: column; gap: 25px; width: 100%; max-width: 400px; padding: 0 20px; }
-        .input-group label { display: block; font-size: 1.1rem; margin-bottom: 8px; }
-        .input-group input { width: 100%; padding: 15px; border: 1px solid #999; border-radius: 25px; outline: none; font-size: 1rem; }
-        .signup-prompt { margin-top: 30px; text-align: center; font-size: 1.2rem; }
-        .signup-prompt a { color: #d1a7a7; text-decoration: none; font-size: 1.4rem; display: block; margin-top: 5px; }
+        /* Sidans innehåll (Skapa konto) */
+        .signup-container { display: flex; flex-direction: column; align-items: center; padding-top: 40px; flex: 1; }
+        .page-title { font-size: 22px; font-weight: normal; margin-bottom: 40px; color: #333; }
+        .signup-form { display: flex; flex-direction: column; gap: 25px; width: 100%; max-width: 400px; padding: 0 20px; }
+        .form-row { display: flex; justify-content: space-between; gap: 20px; width: 100%; }
+        .form-group { flex: 1; display: flex; flex-direction: column; }
+        .form-group label { font-size: 15px; margin-bottom: 5px; color: #333; }
+        .short-input, .long-input { height: 35px; border-radius: 20px; border: none; background-color: #d9d9d9; padding: 0 15px; outline: none; width: 100%; }
     </style>
 </head>
 <body>
@@ -53,7 +51,6 @@
             <a href="Slut.html">Home</a>
             <a href="index.html">Food</a>
             <a href="about.html">About us</a>
-            <!-- AKTIV PÅ LOGIN -->
             <a href="Login.html" class="btn-active-teal">Login</a>
         </nav>
 
@@ -66,31 +63,32 @@
         </div>
     </header>
 
-    <main class="login-container">
-        <div class="login-header">
-            <div class="user-icon">→</div>
-            <h2 class="login-title">Enter your info to log in to your account</h2>
-        </div>
-
-        <form class="login-form">
-            <div class="input-group">
-                <label>Email</label>
-                <input type="email">
+    <main class="signup-container">
+        <h2 class="page-title">Create account</h2>
+        
+        <form class="signup-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First name</label>
+                    <input type="text" class="short-input">
+                </div>
+                <div class="form-group">
+                    <label>Last name</label>
+                    <input type="text" class="short-input">
+                </div>
             </div>
-            <div class="input-group">
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="long-input">
+            </div>
+
+            <div class="form-group">
                 <label>Password:</label>
-                <input type="password">
+                <input type="password" class="long-input">
             </div>
         </form>
-
-        <div class="signup-prompt">
-            <p>Dont have an account?</p>
-            <a href="signup.html">sign in</a>
-        </div>
     </main>
 
 </body>
 </html>
-
-
-6. Skapa Konto (signup.h

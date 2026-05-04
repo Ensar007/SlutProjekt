@@ -1,0 +1,163 @@
+:root { 
+    --brand-teal: #007A8A; 
+}
+
+body { 
+    background-color: #f4f5f5; 
+    margin: 0; 
+    padding: 0; 
+    font-family: Arial, sans-serif; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+}
+
+/* --- Header & Meny --- */
+.global-header { 
+    background-color: #ffffff; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 30px; 
+    border-bottom: 1px solid #ddd; 
+    position: relative; 
+    z-index: 1000; 
+}
+
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+
+.custom-hamburger { 
+    background: var(--brand-teal); 
+    border: none; 
+    padding: 8px 10px; 
+    border-radius: 4px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4px; 
+    cursor: pointer; 
+}
+
+.custom-hamburger span { 
+    display: block; 
+    width: 22px; 
+    height: 3px; 
+    background: white; 
+}
+
+.logo-cart { 
+    font-size: 28px; 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.restaurant-name { 
+    font-size: 18px; 
+    font-style: italic; 
+    font-weight: bold; 
+    color: #000; 
+    margin: 0; 
+}
+
+.header-right { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+}
+
+.header-right a { 
+    text-decoration: none; 
+    color: #000; 
+    font-size: 14px; 
+    font-weight: bold; 
+    font-style: italic; 
+    padding: 8px 20px; 
+    border-radius: 8px; 
+    transition: 0.2s; 
+}
+
+/* Den aktiva knappen */
+.btn-active-teal { 
+    background-color: var(--brand-teal) !important; 
+    color: white !important; 
+    font-style: normal !important; 
+}
+
+.login-btn {
+    background-color: var(--brand-teal); 
+    color: white !important; 
+    font-style: normal !important;
+}
+
+/* Mobilmeny */
+.mobile-nav { 
+    display: none; 
+    flex-direction: column; 
+    background-color: #ffffff; 
+    width: 100%; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1); 
+}
+
+.mobile-nav a { 
+    padding: 15px 30px; 
+    text-decoration: none; 
+    color: #000; 
+    font-weight: bold; 
+    border-bottom: 1px solid #eee; 
+}
+
+@media (max-width: 991px) { 
+    .header-right { display: none; } 
+}
+
+/* --- Sidans Innehåll (About Us) --- */
+.about-container { 
+    width: 100%; 
+    max-width: 800px; 
+    margin: 40px auto; 
+    padding: 0 20px; 
+}
+
+.page-title { 
+    text-align: center; 
+    font-style: italic; 
+    font-size: 24px; 
+    margin-bottom: 30px; 
+}
+
+.about-box { 
+    background-color: #ffffff; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    padding: 20px; 
+    margin-bottom: 25px; 
+    min-height: 120px; 
+}
+
+.about-box h3 { 
+    font-size: 16px; 
+    font-style: italic; 
+    color: #333; 
+    margin-bottom: 15px; 
+}
+
+.contact-grid { 
+    display: flex; 
+    justify-content: space-around; 
+    padding-top: 10px; 
+}
+
+.contact-col { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+    font-style: italic; 
+    font-weight: bold; 
+    font-size: 14px; 
+}
