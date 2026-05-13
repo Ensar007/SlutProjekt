@@ -1,10 +1,12 @@
 import express from "express";
 import {Client} from "pg";
 import dotenv from "dotenv";
+import cors from "cors"
 dotenv.config();
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -12,12 +14,12 @@ app.get("/", (req, res) => {
   });
 
   app.post("/signup", async (req, res) => {
-    const { username, email, password } = req.body;
-  
+    const { firstName, lastName, email, password } = req.body;
+  console.log("hej")
     try {
       const result = await db.query(
-        "INSERT INTO accounts (username, email, password) VALUES ($1, $2, $3) RETURNING *",
-        [username, email, password]
+        "INSERT INTO accounts (firstName, lastName, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
+        [firstName, lastName, email, password]
       );
   
       res.status(201).json({

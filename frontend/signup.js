@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("ridwan somna")
     const form = document.getElementById("signupForm");
   
     form.addEventListener("submit", async (e) => {
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = document.getElementById("password").value;
   
       const username = firstName + " " + lastName;
-  
+      console.log(firstName)
       try {
         const response = await fetch("http://localhost:3010/signup", {
           method: "POST",
@@ -20,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username,
+            firstName,
+            lastName,
             email,
             password,
           }),
