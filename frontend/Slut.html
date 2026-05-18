@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create account - Vår Restaurang</title>
+    <title>Home - Vår Restaurang</title>
+    <!-- Om du använder Bootstrap i Slut.html -->
+    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css)" rel="stylesheet">
     <style>
         :root { --brand-teal: #007A8A; }
-        body { background-color: #f4f5f5; margin: 0; padding: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        body { background-color: #f4f5f5; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         
         /* Header & Meny */
         .global-header { background-color: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 1px solid #ddd; position: relative; z-index: 1000; }
         .header-left { display: flex; align-items: center; gap: 15px; }
+        
+        /* Hamburgarknappen från din Slut.css */
         .custom-hamburger { background: var(--brand-teal); border: none; padding: 8px 10px; border-radius: 4px; display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
         .custom-hamburger span { display: block; width: 22px; height: 3px; background: white; }
+        
         .logo-cart { font-size: 28px; text-decoration: none; color: inherit; }
         .restaurant-name { font-size: 18px; font-style: italic; font-weight: bold; color: #000; margin: 0; }
         
         .header-right { display: flex; gap: 10px; align-items: center; }
         .header-right a { text-decoration: none; color: #000; font-size: 14px; font-weight: bold; font-style: italic; padding: 8px 20px; border-radius: 8px; transition: 0.2s; }
         
-        /* Eftersom vi är på "Skapa konto" låter vi Login vara aktiv eftersom det hör ihop */
+        /* Den aktiva knappen från din Slut.css */
         .btn-active-teal { background-color: var(--brand-teal) !important; color: white !important; font-style: normal !important; }
         
+        /* Mobilmeny */
         .mobile-nav { display: none; flex-direction: column; background-color: #ffffff; width: 100%; position: absolute; top: 100%; left: 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
         .mobile-nav a { padding: 15px 30px; text-decoration: none; color: #000; font-weight: bold; border-bottom: 1px solid #eee; }
         @media (max-width: 991px) { .header-right { display: none; } }
 
-        /* Sidans innehåll (Skapa konto) */
-        .signup-container { display: flex; flex-direction: column; align-items: center; padding-top: 40px; flex: 1; }
-        .page-title { font-size: 22px; font-weight: normal; margin-bottom: 40px; color: #333; }
-        .signup-form { display: flex; flex-direction: column; gap: 25px; width: 100%; max-width: 400px; padding: 0 20px; }
-        .form-row { display: flex; justify-content: space-between; gap: 20px; width: 100%; }
-        .form-group { flex: 1; display: flex; flex-direction: column; }
-        .form-group label { font-size: 15px; margin-bottom: 5px; color: #333; }
-        .short-input, .long-input { height: 35px; border-radius: 20px; border: none; background-color: #d9d9d9; padding: 0 15px; outline: none; width: 100%; }
+        /* Den svarta bild-rutan från din Slut.css */
+        .placeholder-image { background-color: black; height: 400px; width: 100%; max-width: 900px; margin: 60px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-style: italic; font-size: 2rem; }
     </style>
 </head>
 <body>
@@ -48,46 +48,24 @@
         </div>
         
         <nav class="header-right">
-            <a href="Slut.html">Home</a>
+            <!-- AKTIV PÅ HOME -->
+            <a href="Slut.html" class="btn-active-teal">Home</a>
             <a href="index.html">Food</a>
             <a href="about.html">About us</a>
-            <a href="Login.html" class="btn-active-teal">Login</a>
+            <a href="Login.html" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
         </nav>
 
         <div id="mobile-menu" class="mobile-nav">
-            <a href="Slut.html">Home</a>
+            <a href="Slut.html" style="color: var(--brand-teal);">Home</a>
             <a href="index.html">Food</a>
             <a href="about.html">About us</a>
             <a href="ShoppingCart2.html">Kundvagn</a>
-            <a href="Login.html" style="color: var(--brand-teal);">Login</a>
+            <a href="Login.html">Login</a>
         </div>
     </header>
 
-    <main class="signup-container">
-        <h2 class="page-title">Create account</h2>
-        
-        <form class="signup-form">
-            <div class="form-row">
-                <div class="form-group">
-                    <label>First name</label>
-                    <input type="text" class="short-input">
-                </div>
-                <div class="form-group">
-                    <label>Last name</label>
-                    <input type="text" class="short-input">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="long-input">
-            </div>
-
-            <div class="form-group">
-                <label>Password:</label>
-                <input type="password" class="long-input">
-            </div>
-        </form>
+    <main style="padding: 0 20px;">
+        <div class="placeholder-image">Bild</div>
     </main>
 
 </body>
