@@ -2,6 +2,7 @@ import express from "express";
 import {Client} from "pg";
 import dotenv from "dotenv";
 import cors from "cors"
+import bcrypt from "bcrypt";
 dotenv.config();
 
 const app = express();
@@ -17,15 +18,20 @@ app.get("/", (req, res) => {
     const { firstName, lastName, email, password } = req.body;
   console.log("hej")
     try {
+
+      const encpass = await bcrypt.hash(password, 10);
+      console.log(encpass);
+
       const result = await db.query(
         "INSERT INTO accounts (firstName, lastName, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
-        [firstName, lastName, email, password]
+        [firstName, lastName, email, encpass]
       );
   
       res.status(201).json({
         message: "Användare skapad",
         user: result.rows[0],
       });
+      //res.redirect("");
     } catch (err) {
       console.error(err);
       res.status(500).json({

@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
             password,
           }),
         });
+
+      
   
         const data = await response.json();
         console.log(data);
