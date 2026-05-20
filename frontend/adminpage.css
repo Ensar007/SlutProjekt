@@ -1,0 +1,318 @@
+/* reset */
+* {
+    margin: 0; /* noll */
+    padding: 0; /* noll */
+    box-sizing: border-box; /* mått */
+}
+
+body {
+    font-family: Arial, sans-serif; /* font */
+    background-color: #ececec; /* bakgrund */
+    color: #111; /* text */
+}
+
+/* toppbar */
+.admin-topbar {
+    height: 92px; /* höjd */
+    background-color: #f8f8f8; /* ljus */
+    display: flex; /* rad */
+    align-items: center; /* mitten */
+    justify-content: space-between; /* dela */
+    padding: 0 14px; /* luft */
+    border-bottom: 1px solid #ddd; /* linje */
+}
+
+.admin-left {
+    display: flex; /* rad */
+    align-items: center; /* mitten */
+    gap: 18px; /* avstånd */
+}
+
+.menu-btn {
+    width: 56px; /* bredd */
+    height: 56px; /* höjd */
+    background-color: #0b7c8c; /* turkos */
+    border: none; /* ingen kant */
+    display: flex; /* flex */
+    flex-direction: column; /* stapla */
+    justify-content: center; /* mitten */
+    gap: 6px; /* mellanrum */
+    padding: 0 12px; /* luft */
+    cursor: pointer; /* hand */
+}
+
+.menu-btn span {
+    display: block; /* streck */
+    height: 4px; /* tjock */
+    width: 100%; /* full */
+    background-color: white; /* vit */
+    border-radius: 10px; /* rund */
+}
+
+.cart-logo {
+    font-size: 2rem; /* ikon */
+    color: #d5942f; /* guld */
+}
+
+.admin-brand {
+    font-size: 1.15rem; /* text */
+    font-weight: 700; /* fet */
+    font-style: italic; /* kursiv */
+}
+
+.admin-nav {
+    display: flex; /* rad */
+    gap: 24px; /* avstånd */
+}
+
+.admin-nav a {
+    text-decoration: none; /* ingen linje */
+    color: #111; /* svart */
+    font-size: 0.95rem; /* text */
+    font-weight: 600; /* fet */
+}
+
+/* main */
+.admin-page {
+    max-width: 1180px; /* max */
+    margin: 0 auto; /* mitten */
+    padding: 14px 20px 40px; /* luft */
+}
+
+.search-row {
+    display: flex; /* rad */
+    justify-content: space-between; /* dela */
+    align-items: center; /* mitten */
+    margin-bottom: 44px; /* under */
+}
+
+.search-box {
+    display: flex; /* rad */
+    align-items: center; /* mitten */
+    gap: 18px; /* avstånd */
+}
+
+.search-icon {
+    width: 44px; /* bredd */
+    height: 44px; /* höjd */
+    background-color: #fff; /* vit */
+    border: 1px solid #ddd; /* kant */
+    display: flex; /* flex */
+    align-items: center; /* mitten */
+    justify-content: center; /* mitten */
+    font-size: 2rem; /* ikon */
+}
+
+.search-box input {
+    width: 310px; /* bredd */
+    border: none; /* ingen kant */
+    border-bottom: 1px solid #555; /* linje */
+    background: transparent; /* genomskinlig */
+    font-size: 1rem; /* text */
+    padding: 8px 6px; /* luft */
+    outline: none; /* ingen glow */
+    text-align: center; /* mitten */
+}
+
+.top-icons {
+    display: flex; /* rad */
+    gap: 18px; /* avstånd */
+}
+
+.icon-box {
+    width: 42px; /* bredd */
+    height: 42px; /* höjd */
+    background-color: #fff; /* vit */
+    border: 1px solid #ddd; /* kant */
+    display: flex; /* flex */
+    align-items: center; /* mitten */
+    justify-content: center; /* mitten */
+    font-size: 1.5rem; /* ikon */
+}
+
+/* kort */
+.stats-row {
+    display: flex; /* rad */
+    justify-content: center; /* centrum */
+    gap: 64px; /* avstånd */
+    margin-bottom: 70px; /* under */
+    flex-wrap: wrap; /* bryt */
+}
+
+.stat-card {
+    width: 220px; /* bredd */
+    min-height: 108px; /* höjd */
+    color: white; /* vit */
+    padding: 16px 16px 10px; /* luft */
+}
+
+.stat-card h3 {
+    font-size: 1rem; /* titel */
+    margin-bottom: 26px; /* under */
+    font-weight: 600; /* fet */
+}
+
+.blue-card {
+    background-color: #4a5cff; /* blå */
+}
+
+.green-card {
+    background-color: #04df2d; /* grön */
+}
+
+.red-card {
+    background-color: #ff2c2c; /* röd */
+}
+
+.stat-footer {
+    display: flex; /* rad */
+    justify-content: space-between; /* dela */
+    align-items: flex-end; /* botten */
+}
+
+.stat-icon {
+    font-size: 1.8rem; /* ikon */
+    background-color: #fff; /* vit */
+    color: #111; /* svart */
+    padding: 2px 6px; /* luft */
+}
+
+.stat-info {
+    text-align: right; /* höger */
+}
+
+.stat-info strong {
+    display: block; /* rad */
+    font-size: 2rem; /* stor */
+    line-height: 1; /* tät */
+}
+
+.stat-info p {
+    font-size: 0.75rem; /* liten */
+    margin-top: 4px; /* under */
+}
+
+/* paneler */
+.bottom-panels {
+    display: flex; /* rad */
+    justify-content: center; /* centrum */
+    gap: 80px; /* avstånd */
+    flex-wrap: wrap; /* bryt */
+}
+
+.panel {
+    width: 280px; /* bredd */
+    background: transparent; /* tom */
+}
+
+.panel-header {
+    height: 48px; /* höjd */
+    border: 1px solid #8d8d8d; /* kant */
+    background-color: #f7f7f7; /* ljus */
+    display: flex; /* rad */
+    align-items: center; /* mitten */
+    gap: 10px; /* avstånd */
+    padding: 0 12px; /* luft */
+}
+
+.panel-header h4 {
+    font-size: 1rem; /* text */
+    font-weight: 600; /* fet */
+}
+
+.panel-body {
+    height: 135px; /* höjd */
+    background-color: white; /* vit */
+    border-left: 1px solid #cfcfcf; /* kant */
+    border-right: 1px solid #cfcfcf; /* kant */
+    border-bottom: 1px solid #cfcfcf; /* kant */
+}
+
+/* sidomeny */
+.side-menu {
+    position: fixed; /* fast */
+    top: 0; /* topp */
+    left: -270px; /* gömd */
+    width: 250px; /* bredd */
+    height: 100%; /* full */
+    background-color: #ffffff; /* vit */
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15); /* skugga */
+    transition: left 0.3s ease; /* glid */
+    z-index: 2000; /* överst */
+    padding: 20px; /* luft */
+}
+
+.side-menu.active {
+    left: 0; /* visa */
+}
+
+.side-menu-header {
+    display: flex; /* rad */
+    align-items: center; /* mitten */
+    justify-content: space-between; /* dela */
+    margin-bottom: 24px; /* under */
+}
+
+.close-menu {
+    border: none; /* ingen */
+    background: none; /* ingen */
+    font-size: 2rem; /* stor */
+    cursor: pointer; /* hand */
+}
+
+.side-menu-links {
+    display: flex; /* flex */
+    flex-direction: column; /* kolumn */
+    gap: 14px; /* avstånd */
+}
+
+.side-menu-links a {
+    text-decoration: none; /* ingen linje */
+    color: #111; /* svart */
+    font-weight: 600; /* fet */
+}
+
+.admin-only-link {
+    color: #0b7c8c; /* admin */
+}
+
+.menu-overlay {
+    position: fixed; /* fast */
+    inset: 0; /* full */
+    background: rgba(0, 0, 0, 0.25); /* mörk */
+    opacity: 0; /* dold */
+    visibility: hidden; /* dold */
+    transition: 0.3s ease; /* fade */
+    z-index: 1500; /* lager */
+}
+
+.menu-overlay.active {
+    opacity: 1; /* visa */
+    visibility: visible; /* visa */
+}
+
+/* mobil */
+@media (max-width: 900px) {
+    .admin-topbar {
+        flex-wrap: wrap; /* bryt */
+        height: auto; /* auto */
+        padding: 14px; /* luft */
+        gap: 16px; /* avstånd */
+    }
+
+    .admin-nav {
+        width: 100%; /* full */
+        justify-content: center; /* mitten */
+        flex-wrap: wrap; /* bryt */
+        gap: 14px; /* avstånd */
+    }
+
+    .search-row {
+        flex-direction: column; /* stapla */
+        gap: 20px; /* avstånd */
+    }
+
+    .search-box input {
+        width: 220px; /* mindre */
+    }
+}

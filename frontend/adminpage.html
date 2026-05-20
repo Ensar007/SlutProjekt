@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8"> <!-- tecken -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- mobil -->
+    <title>Admin Panel</title> <!-- titel -->
+    <link rel="stylesheet" href="adminpage.css"> <!-- css -->
+</head>
+<body>
+
+    <!-- skydda sida -->
+    <script>
+        const isAdminLoggedIn = localStorage.getItem("adminAccess") === "true"; // koll
+
+        if (!isAdminLoggedIn) { // ej admin
+            window.location.href = "Login.html"; // tillbaka
+        }
+    </script>
+
+    <!-- sidomeny -->
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <h2>Menu</h2> <!-- rubrik -->
+            <button class="close-menu" id="closeMenu" aria-label="Stäng meny">&times;</button> <!-- stäng -->
+        </div>
+
+        <nav class="side-menu-links">
+            <a href="Slut.html">Home</a> <!-- hem -->
+            <a href="#">Food</a> <!-- mat -->
+            <a href="Slut3.html">About us</a> <!-- about -->
+            <a href="Login.html">Login</a> <!-- login -->
+            <a href="adminpage.html" id="adminPanelLink" class="admin-only-link">Admin Panel</a> <!-- admin -->
+        </nav>
+    </aside>
+
+    <!-- overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- toppbar -->
+    <header class="admin-topbar">
+        <div class="admin-left">
+            <button class="menu-btn" id="openMenu" aria-label="Öppna meny"> <!-- meny -->
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="cart-logo">🛒</div> <!-- ikon -->
+        </div>
+
+        <div class="admin-brand">(Namn på vår restaurang)</div> <!-- namn -->
+
+        <nav class="admin-nav">
+            <a href="Slut.html">Home</a> <!-- hem -->
+            <a href="#">Food</a> <!-- mat -->
+            <a href="Slut3.html">About us</a> <!-- about -->
+            <a href="Login.html">Login</a> <!-- login -->
+        </nav>
+    </header>
+
+    <!-- innehåll -->
+    <main class="admin-page">
+        <section class="search-row">
+            <div class="search-box">
+                <span class="search-icon">⌕</span> <!-- sök -->
+                <input type="text" placeholder="Type to search"> <!-- input -->
+            </div>
+
+            <div class="top-icons">
+                <div class="icon-box">⌂</div> <!-- github/plats -->
+                <div class="icon-box">🔔</div> <!-- notis -->
+                <div class="icon-box">🧍</div> <!-- profil -->
+            </div>
+        </section>
+
+        <section class="stats-row">
+            <div class="stat-card blue-card">
+                <h3>Sign ups</h3> <!-- titel -->
+                <div class="stat-footer">
+                    <span class="stat-icon">🧍</span> <!-- ikon -->
+                    <div class="stat-info">
+                        <strong>49</strong> <!-- siffra -->
+                        <p>25% from last month</p> <!-- text -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card green-card">
+                <h3>Revenue</h3> <!-- titel -->
+                <div class="stat-footer">
+                    <span class="stat-icon">🛒</span> <!-- ikon -->
+                    <div class="stat-info">
+                        <strong>4920$</strong> <!-- siffra -->
+                        <p>17,5% from last month</p> <!-- text -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card red-card">
+                <h3>Open tickets</h3> <!-- titel -->
+                <div class="stat-footer">
+                    <span class="stat-icon">☎</span> <!-- ikon -->
+                    <div class="stat-info">
+                        <strong>19</strong> <!-- siffra -->
+                        <p>&nbsp;</p> <!-- tom -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-panels">
+            <div class="panel">
+                <div class="panel-header">
+                    <span>◔</span> <!-- ikon -->
+                    <h4>Bar chart</h4> <!-- titel -->
+                </div>
+                <div class="panel-body"></div> <!-- tom -->
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <span>🔔</span> <!-- ikon -->
+                    <h4>Notifications</h4> <!-- titel -->
+                </div>
+                <div class="panel-body"></div> <!-- tom -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const openMenu = document.getElementById("openMenu"); // öppna
+        const closeMenu = document.getElementById("closeMenu"); // stäng
+        const sideMenu = document.getElementById("sideMenu"); // meny
+        const menuOverlay = document.getElementById("menuOverlay"); // overlay
+        const adminPanelLink = document.getElementById("adminPanelLink"); // admin
+
+        openMenu.addEventListener("click", () => { // öppna meny
+            sideMenu.classList.add("active"); // visa
+            menuOverlay.classList.add("active"); // visa
+        });
+
+        closeMenu.addEventListener("click", () => { // stäng meny
+            sideMenu.classList.remove("active"); // dölj
+            menuOverlay.classList.remove("active"); // dölj
+        });
+
+        menuOverlay.addEventListener("click", () => { // klick utanför
+            sideMenu.classList.remove("active"); // dölj
+            menuOverlay.classList.remove("active"); // dölj
+        });
+
+        if (isAdminLoggedIn) { // visa admin
+            adminPanelLink.style.display = "block"; // block
+        } else { // dölj admin
+            adminPanelLink.style.display = "none"; // none
+        }
+    </script>
+</body>
+</html>
