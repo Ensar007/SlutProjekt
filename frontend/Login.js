@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Hämta formuläret och meddelandeelementet efter att sidan laddats
   const form = document.querySelector(".login-form");
   const loginMessage = document.getElementById("loginMessage"); // Hämtar p-taggen för fel/framgångsmeddelanden
 
@@ -26,11 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log(data);
 
           if (response.ok) {
-              // 1. Spara JWT-token i localStorage
+              // 1. Spara JWT-token i localStorage för att hålla användaren inloggad på andra sidor
               localStorage.setItem("token", data.token);
 
-              // Speciell lösning för din admin-sida:
-              // Om admin loggar in (t.ex. admin@restaurang.com), sparar vi adminAccess så din admin-sida släpper in dig.
+              // Speciell lösning för admin-sida: adminfiltrering bygger på adminAccess-flaggan
               if (email.toLowerCase() === "admin@restaurang.com") {
                   localStorage.setItem("adminAccess", "true");
                   
