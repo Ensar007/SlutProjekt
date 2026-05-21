@@ -8,10 +8,29 @@
 </head>
 <body class="login-page-body">
 
+    <!-- sidomeny -->
+    <aside class="login-side-menu" id="loginSideMenu">
+        <div class="login-side-header">
+            <h2>Menu</h2> <!-- rubrik -->
+            <button class="login-close-menu" id="loginCloseMenu" aria-label="Stäng meny">&times;</button> <!-- stäng -->
+        </div>
+
+        <nav class="login-side-links">
+            <a href="Slut.html">Home</a> <!-- hem -->
+            <a href="#">Food</a> <!-- mat -->
+            <a href="Slut3.html">About us</a> <!-- about -->
+            <a href="Login.html">Login</a> <!-- login -->
+            <a href="adminpage.html" id="loginAdminLink">Admin Panel</a> <!-- admin -->
+        </nav>
+    </aside>
+
+    <!-- overlay -->
+    <div class="login-menu-overlay" id="loginMenuOverlay"></div>
+
     <!-- toppbar -->
     <nav class="login-topbar">
         <div class="login-topbar-left">
-            <button class="login-menu-btn" type="button" aria-label="Öppna meny"> <!-- meny -->
+            <button class="login-menu-btn" id="loginOpenMenu" type="button" aria-label="Öppna meny"> <!-- meny -->
                 <span></span>
                 <span></span>
                 <span></span>
@@ -58,6 +77,33 @@
     </main>
 
     <script>
+        const loginOpenMenu = document.getElementById("loginOpenMenu"); // öppna
+        const loginCloseMenu = document.getElementById("loginCloseMenu"); // stäng
+        const loginSideMenu = document.getElementById("loginSideMenu"); // meny
+        const loginMenuOverlay = document.getElementById("loginMenuOverlay"); // overlay
+        const loginAdminLink = document.getElementById("loginAdminLink"); // admin
+
+        loginOpenMenu.addEventListener("click", () => { // öppna meny
+            loginSideMenu.classList.add("active"); // visa
+            loginMenuOverlay.classList.add("active"); // visa
+        });
+
+        loginCloseMenu.addEventListener("click", () => { // stäng meny
+            loginSideMenu.classList.remove("active"); // dölj
+            loginMenuOverlay.classList.remove("active"); // dölj
+        });
+
+        loginMenuOverlay.addEventListener("click", () => { // klick utanför
+            loginSideMenu.classList.remove("active"); // dölj
+            loginMenuOverlay.classList.remove("active"); // dölj
+        });
+
+        if (localStorage.getItem("adminAccess") === "true") { // admin koll
+            loginAdminLink.style.display = "block"; // visa
+        } else {
+            loginAdminLink.style.display = "none"; // dölj
+        }
+
         function checkLogin(event) { // login
             event.preventDefault(); // stoppa
 
@@ -67,6 +113,7 @@
 
             if (username === "test" && password === "123") { // rätt
                 localStorage.setItem("adminAccess", "true"); // spara
+                loginAdminLink.style.display = "block"; // visa admin
                 loginMessage.style.color = "green"; // grön
                 loginMessage.textContent = "Inloggning lyckades..."; // text
 
@@ -75,6 +122,7 @@
                 }, 700);
             } else { // fel
                 localStorage.removeItem("adminAccess"); // rensa
+                loginAdminLink.style.display = "none"; // dölj admin
                 loginMessage.style.color = "#b14b4b"; // röd
                 loginMessage.textContent = "Fel användarnamn eller lösenord."; // text
             }
