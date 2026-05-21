@@ -49,6 +49,7 @@
             <a href="index.html">Food</a>
             <!-- AKTIV PÅ ABOUT US -->
             <a href="about.html" class="btn-active-teal">About us</a>
+            <a href="adminpage.html" id="adminHeaderLink" style="display: none; color: #007A8A; font-weight: bold; margin-right: 15px;">Admin Panel</a>
             <a href="Login.html" id="loginHeaderBtn" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
         </nav>
 
@@ -91,10 +92,13 @@
         document.addEventListener("DOMContentLoaded", () => {
             // 1. Hitta inloggningsknappen på den här specifika sidan
             const loginBtn = document.getElementById("loginHeaderBtn");
-            
+            const adminLink = document.getElementById("adminHeaderLink"); // Hitta admin-länken
             // 2. Kolla om det finns en sparad token i webbläsarens minne
             const token = localStorage.getItem("token");
-        
+            const isAdmin = localStorage.getItem("adminAccess") === "true"; // Kolla om användaren är admin
+            if (isAdmin && adminLink) {
+                adminLink.style.display = "inline-block";
+            }
             if (token) {
                 // 3. Om token finns, ändra texten till "Logga ut"
                 loginBtn.textContent = "Logga ut";
@@ -110,8 +114,8 @@
                     
                     alert("Du har loggats ut!");
                     
-                    // Ladda om den aktuella sidan så att det står "Login" igen
-                    window.location.reload();
+                    
+                    window.location.href = "Slut.html"; // Skicka tillbaka till startsidan
                 });
             }
         });
