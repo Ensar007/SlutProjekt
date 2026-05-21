@@ -49,7 +49,8 @@
             <a href="index.html">Food</a>
             <!-- AKTIV PÅ ABOUT US -->
             <a href="about.html" class="btn-active-teal">About us</a>
-            <a href="Login.html" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
+            <a href="adminpage.html" id="adminHeaderLink" style="display: none; color: #007A8A; font-weight: bold; margin-right: 15px;">Admin Panel</a>
+            <a href="Login.html" id="loginHeaderBtn" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
         </nav>
 
         <div id="mobile-menu" class="mobile-nav">
@@ -86,6 +87,39 @@
             </div>
         </div>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Hitta inloggningsknappen på den här specifika sidan
+            const loginBtn = document.getElementById("loginHeaderBtn");
+            const adminLink = document.getElementById("adminHeaderLink"); // Hitta admin-länken
+            // 2. Kolla om det finns en sparad token i webbläsarens minne
+            const token = localStorage.getItem("token");
+            const isAdmin = localStorage.getItem("adminAccess") === "true"; // Kolla om användaren är admin
+            if (isAdmin && adminLink) {
+                adminLink.style.display = "inline-block";
+            }
+            if (token) {
+                // 3. Om token finns, ändra texten till "Logga ut"
+                loginBtn.textContent = "Logga ut";
+                loginBtn.href = "#"; // Hindrar sidan från att hoppa till Login.html när man klickar
+                
+                // 4. Gör så att man faktiskt loggas ut när man klickar
+                loginBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    
+                    // Ta bort inloggningsuppgifterna från webbläsaren
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("adminAccess"); 
+                    
+                    alert("Du har loggats ut!");
+                    
+                    
+                    window.location.href = "Slut.html"; // Skicka tillbaka till startsidan
+                });
+            }
+        });
+        </script>
 
 </body>
 </html>

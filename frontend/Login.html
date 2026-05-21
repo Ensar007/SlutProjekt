@@ -70,7 +70,7 @@
 
                 <div class="login-signup">
                     <p>Dont have an account?</p>
-                    <a href="#">sign in</a>
+                    <a href="signup.html">sign in</a>
                 </div>
             </form>
         </section>
@@ -101,7 +101,7 @@
         if (localStorage.getItem("adminAccess") === "true") { // admin koll
             loginAdminLink.style.display = "block"; // visa
         } else {
-            loginAdminLink.style.display = "none"; // dölj
+            loginAdminLink.style.display = "none"; // dölj admin
         }
 
         function checkLogin(event) { // login
