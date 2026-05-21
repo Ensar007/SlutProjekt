@@ -7,29 +7,28 @@
     <style>
         :root { --brand-teal: #007A8A; }
         body { background-color: #f4f5f5; margin: 0; padding: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
-        
-        /* Header & Meny */
+
         .global-header { background-color: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 1px solid #ddd; position: relative; z-index: 1000; }
         .header-left { display: flex; align-items: center; gap: 15px; }
         .custom-hamburger { background: var(--brand-teal); border: none; padding: 8px 10px; border-radius: 4px; display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
         .custom-hamburger span { display: block; width: 22px; height: 3px; background: white; }
         .logo-cart { font-size: 28px; text-decoration: none; color: inherit; }
         .restaurant-name { font-size: 18px; font-style: italic; font-weight: bold; color: #000; margin: 0; }
-        
+
         .header-right { display: flex; gap: 10px; align-items: center; }
         .header-right a { text-decoration: none; color: #000; font-size: 14px; font-weight: bold; font-style: italic; padding: 8px 20px; border-radius: 8px; transition: 0.2s; }
+        .header-right a:hover { background: #f1f1f1; }
         .btn-active-teal { background-color: var(--brand-teal) !important; color: white !important; font-style: normal !important; }
-        
+
         .mobile-nav { display: none; flex-direction: column; background-color: #ffffff; width: 100%; position: absolute; top: 100%; left: 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
         .mobile-nav a { padding: 15px 30px; text-decoration: none; color: #000; font-weight: bold; border-bottom: 1px solid #eee; }
         @media (max-width: 991px) { .header-right { display: none; } }
 
-        /* Sidans innehåll (Kundvagn) */
         .cart-page { padding: 40px 20px; max-width: 1100px; margin: 0 auto; width: 100%; }
         .page-title { margin-bottom: 30px; font-style: italic; text-align: center; }
         .cart-layout { display: grid; grid-template-columns: 1fr 350px; gap: 30px; }
         @media (max-width: 900px) { .cart-layout { grid-template-columns: 1fr; } }
-        
+
         .cart-items-section, .summary-card { background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #dcdcdc; }
         .cart-table { width: 100%; border-collapse: collapse; }
         .cart-table th { text-align: left; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0; }
@@ -40,31 +39,32 @@
         .qty-btn { border: none; background: transparent; padding: 8px 12px; cursor: pointer; color: var(--brand-teal); font-weight: bold; }
         .qty-value { padding: 0 10px; font-weight: bold; }
         .remove-item { border: none; background: none; color: #ff5e5e; cursor: pointer; font-weight: bold; }
-        
+
         .summary-row { display: flex; justify-content: space-between; margin-bottom: 12px; }
         .summary-row.total { font-size: 1.2rem; font-weight: bold; color: var(--brand-teal); margin-top: 15px; }
-        .payment-option { display: flex; align-items: center; gap: 12px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; cursor: pointer; }
+        .payment-option { display: flex; align-items: center; gap: 12px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; }
+        .payment-option:hover { border-color: var(--brand-teal); }
         .payment-option input { accent-color: var(--brand-teal); }
         .place-order-btn { width: 100%; background-color: var(--brand-teal); color: white; border: none; padding: 16px; border-radius: 20px; font-weight: bold; margin-top: 20px; cursor: pointer; }
+        .place-order-btn:hover { background-color: #005f6b; }
     </style>
 </head>
 <body>
 
     <header class="global-header">
         <div class="header-left">
-            <button class="custom-hamburger" onclick="const m=document.getElementById('mobile-menu'); m.style.display=m.style.display==='flex'?'none':'flex';">
+            <button class="custom-hamburger" onclick="toggleMobileMenu()">
                 <span></span><span></span><span></span>
             </button>
-            <!-- Länkar till sig själv, men man är ju redan i kundvagnen -->
             <a href="ShoppingCart2.html" class="logo-cart">🛒</a>
             <h1 class="restaurant-name">(Namn på vår resturang)</h1>
         </div>
-        
+
         <nav class="header-right">
             <a href="Slut.html">Home</a>
             <a href="index.html">Food</a>
             <a href="about.html">About us</a>
-            <a href="Login.html" style="background-color: var(--brand-teal); color: white; font-style: normal; padding: 8px 20px; border-radius: 8px;">Login</a>
+            <a href="Login.html" class="btn-active-teal">Login</a>
         </nav>
 
         <div id="mobile-menu" class="mobile-nav">
@@ -78,7 +78,7 @@
 
     <main class="cart-page">
         <h2 class="page-title">Din Varukorg</h2>
-        
+
         <div class="cart-layout">
             <section class="cart-items-section">
                 <table class="cart-table">
@@ -144,13 +144,21 @@
 
                     <div style="margin-top: 25px;">
                         <h4 style="margin-bottom: 15px; font-size: 0.9rem; color: #888;">BETALSÄTT</h4>
+
                         <label class="payment-option">
-                            <input type="radio" name="payment" checked>
-                            <div><span style="font-weight: bold;">Swish</span><br><span style="font-size: 12px; color: #666;">Betala direkt med mobilen</span></div>
+                            <input type="radio" name="payment" value="swish" checked>
+                            <div>
+                                <span style="font-weight: bold;">Swish</span><br>
+                                <span style="font-size: 12px; color: #666;">Betala direkt med mobilen</span>
+                            </div>
                         </label>
+
                         <label class="payment-option">
-                            <input type="radio" name="payment">
-                            <div><span style="font-weight: bold;">Betalkort</span><br><span style="font-size: 12px; color: #666;">Visa, Mastercard, Maestro</span></div>
+                            <input type="radio" name="payment" value="card">
+                            <div>
+                                <span style="font-weight: bold;">Betalkort</span><br>
+                                <span style="font-size: 12px; color: #666;">Visa, Mastercard, Maestro</span>
+                            </div>
                         </label>
                     </div>
 
@@ -161,9 +169,15 @@
     </main>
 
     <script>
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             const cartBody = document.getElementById('cart-body');
             const deliveryFee = 39;
+
             function updateTotals() {
                 let subtotal = 0;
                 document.querySelectorAll('.cart-item').forEach(item => {
@@ -173,25 +187,54 @@
                     item.querySelector('.subtotal-price').textContent = itemTotal + ' kr';
                     subtotal += itemTotal;
                 });
+
                 const currentDelivery = subtotal > 0 ? deliveryFee : 0;
                 const total = subtotal + currentDelivery;
+
                 document.getElementById('cart-subtotal').textContent = subtotal + ' kr';
                 document.getElementById('cart-delivery').textContent = currentDelivery + ' kr';
                 document.getElementById('cart-total').textContent = total + ' kr';
                 document.getElementById('checkout-btn').textContent = `Slutför köp (${total} kr)`;
             }
+
             cartBody.addEventListener('click', (e) => {
-                if (e.target.classList.contains('remove-item')) { e.target.closest('.cart-item').remove(); updateTotals(); }
-                if (e.target.classList.contains('plus')) { let qtySpan = e.target.previousElementSibling; qtySpan.textContent = parseInt(qtySpan.textContent) + 1; updateTotals(); }
+                if (e.target.classList.contains('remove-item')) {
+                    e.target.closest('.cart-item').remove();
+                    updateTotals();
+                }
+
+                if (e.target.classList.contains('plus')) {
+                    let qtySpan = e.target.previousElementSibling;
+                    qtySpan.textContent = parseInt(qtySpan.textContent) + 1;
+                    updateTotals();
+                }
+
                 if (e.target.classList.contains('minus')) {
                     let qtySpan = e.target.nextElementSibling;
                     let currentQty = parseInt(qtySpan.textContent);
-                    if (currentQty > 1) { qtySpan.textContent = currentQty - 1; } 
-                    else { e.target.closest('.cart-item').remove(); }
+                    if (currentQty > 1) {
+                        qtySpan.textContent = currentQty - 1;
+                    } else {
+                        e.target.closest('.cart-item').remove();
+                    }
                     updateTotals();
                 }
             });
-            updateTotals(); 
+
+            document.getElementById('checkout-btn').addEventListener('click', () => {
+                const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+                const totalText = document.getElementById('cart-total').textContent;
+
+                localStorage.setItem('orderTotal', totalText);
+
+                if (selectedPayment === 'swish') {
+                    window.location.href = 'swishpayment.html';
+                } else {
+                    window.location.href = 'cardpayment.html';
+                }
+            });
+
+            updateTotals();
         });
     </script>
 </body>

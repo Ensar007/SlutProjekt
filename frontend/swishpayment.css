@@ -1,0 +1,238 @@
+:root {
+    --brand-teal: #007A8A;
+    --bg: #f4f5f5;
+    --card-bg: #ffffff;
+    --text: #111;
+    --border: #dcdcdc;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    font-family: Arial, sans-serif;
+    color: var(--text);
+}
+
+.payment-header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.custom-hamburger {
+    background: var(--brand-teal);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.custom-hamburger span {
+    display: block;
+    width: 22px;
+    height: 3px;
+    background: white;
+}
+
+.logo-cart {
+    font-size: 28px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.restaurant-name {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 8px 20px;
+    border-radius: 8px;
+}
+
+.btn-active-teal {
+    background-color: var(--brand-teal);
+    color: white !important;
+    font-style: normal !important;
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+}
+
+.mobile-nav a {
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+}
+
+.swish-page {
+    max-width: 760px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.swish-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.eyebrow {
+    color: var(--brand-teal);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.swish-card h2 {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.swish-info {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.swish-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.swish-form label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.swish-form input {
+    width: 100%;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 15px;
+    background: white;
+}
+
+.fake-qr {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #f7fbfb;
+    border: 1px solid #d9eded;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 8px;
+}
+
+.qr-box {
+    width: 80px;
+    height: 80px;
+    background: repeating-linear-gradient(
+        45deg,
+        #111,
+        #111 6px,
+        #fff 6px,
+        #fff 12px
+    );
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.qr-text {
+    color: #666;
+    font-size: 14px;
+}
+
+.payment-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.primary-btn,
+.secondary-btn {
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: var(--brand-teal);
+    color: white;
+    flex: 1;
+}
+
+.secondary-btn {
+    background: #eef1f1;
+    color: #222;
+    flex: 1;
+}
+
+@media (max-width: 991px) {
+    .header-right {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .fake-qr,
+    .payment-actions {
+        flex-direction: column;
+    }
+
+    .swish-card {
+        padding: 22px;
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swishbetalning</title>
+    <link rel="stylesheet" href="swishpayment.css">
+</head>
+<body>
+
+    <header class="payment-header">
+        <div class="header-left">
+            <button class="custom-hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="ShoppingCart2.html" class="logo-cart">🛒</a>
+            <h1 class="restaurant-name">(Namn på vår resturang)</h1>
+        </div>
+
+        <nav class="header-right">
+            <a href="Slut.html">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="Login.html" class="btn-active-teal">Login</a>
+        </nav>
+
+        <div id="mobile-menu" class="mobile-nav">
+            <a href="Slut.html">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="ShoppingCart2.html">Kundvagn</a>
+            <a href="Login.html">Login</a>
+        </div>
+    </header>
+
+    <main class="swish-page">
+        <section class="swish-card">
+            <p class="eyebrow">Swishbetalning</p>
+            <h2>Betala med Swish</h2>
+            <p class="swish-info">Belopp att betala: <strong id="swish-total">458 kr</strong></p>
+            <p class="swish-info">Fyll i ditt nummer och godkänn betalningen i mobilen.</p>
+
+            <form id="swish-form" class="swish-form">
+                <label for="swish-number">Telefonnummer</label>
+                <input type="tel" id="swish-number" placeholder="07X XXX XX XX" required>
+
+                <div class="fake-qr">
+                    <div class="qr-box">QR</div>
+                    <div>
+                        <p><strong>Skanna med Swish</strong></p>
+                        <p class="qr-text">Du kan också skriva in ditt nummer manuellt.</p>
+                    </div>
+                </div>
+
+                <div class="payment-actions">
+                    <a href="ShoppingCart2.html" class="secondary-btn">Tillbaka</a>
+                    <button type="submit" class="primary-btn">Betala med Swish</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        const total = localStorage.getItem('orderTotal') || '458 kr';
+        document.getElementById('swish-total').textContent = total;
+
+        document.getElementById('swish-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'confirmation.html';
+        });
+    </script>
+</body>
+</html>

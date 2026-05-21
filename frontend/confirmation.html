@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bekräftelse</title>
+    <link rel="stylesheet" href="confirmation.css">
+</head>
+<body>
+
+    <header class="confirmation-header">
+        <div class="header-left">
+            <button class="custom-hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="ShoppingCart2.html" class="logo-cart">🛒</a>
+            <h1 class="restaurant-name">(Namn på vår resturang)</h1>
+        </div>
+
+        <nav class="header-right">
+            <a href="Slut.html">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="Login.html" class="btn-active-teal">Login</a>
+        </nav>
+
+        <div id="mobile-menu" class="mobile-nav">
+            <a href="Slut.html">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="ShoppingCart2.html">Kundvagn</a>
+            <a href="Login.html">Login</a>
+        </div>
+    </header>
+
+    <main class="confirmation-page">
+        <div class="dot-pattern left-dots"></div>
+        <div class="dot-pattern right-dots"></div>
+
+        <section class="confirmation-card">
+            <div class="confirmation-icon">🛍️</div>
+            <h2>Thank you!</h2>
+            <p class="confirmation-text">
+                Din beställning är mottagen och en bekräftelse har skickats vidare i systemet.
+            </p>
+            <p class="confirmation-text">
+                Totalt betalt: <strong id="confirmation-total">458 kr</strong>
+            </p>
+
+            <form class="confirmation-form">
+                <input type="email" placeholder="Email Address">
+                <button type="button">Ja, skicka erbjudanden</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        document.getElementById('confirmation-total').textContent =
+            localStorage.getItem('orderTotal') || '458 kr';
+    </script>
+</body>
+</html>
