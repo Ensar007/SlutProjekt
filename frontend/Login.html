@@ -38,7 +38,7 @@
                 <p>Enter your info to log in to your account</p> <!-- text -->
             </div>
 
-            <form class="login-form" onsubmit="checkLogin(event)"> <!-- form -->
+            <form class="login-form"> <!-- form -->
                 <label for="username">Email</label> <!-- label -->
                 <input type="text" id="username" name="username" required> <!-- email -->
 
@@ -51,34 +51,35 @@
 
                 <div class="login-signup">
                     <p>Dont have an account?</p>
-                    <a href="#">sign in</a>
+                    <a href="signup.html">sign in</a>
                 </div>
             </form>
         </section>
     </main>
 
-    <script>
-        function checkLogin(event) { // login
-            event.preventDefault(); // stoppa
+    <script src="Login.js">
+        // function checkLogin(event) { // login
+        //     event.preventDefault(); // stoppa
 
-            const username = document.getElementById("username").value.trim(); // namn
-            const password = document.getElementById("password").value.trim(); // lösen
-            const loginMessage = document.getElementById("loginMessage"); // text
+        //     const username = document.getElementById("username").value.trim(); // namn
+        //     const password = document.getElementById("password").value.trim(); // lösen
+        //     const loginMessage = document.getElementById("loginMessage"); // text
 
-            if (username === "test" && password === "123") { // rätt
-                localStorage.setItem("adminAccess", "true"); // spara
-                loginMessage.style.color = "green"; // grön
-                loginMessage.textContent = "Inloggning lyckades..."; // text
+        //     if (username === "test" && password === "123") { // rätt
+        //         localStorage.setItem("adminAccess", "true"); // spara
+        //         loginMessage.style.color = "green"; // grön
+        //         loginMessage.textContent = "Inloggning lyckades..."; // text
 
-                setTimeout(() => { // väntan
-                    window.location.href = "adminpage.html"; // vidare
-                }, 700);
-            } else { // fel
-                localStorage.removeItem("adminAccess"); // rensa
-                loginMessage.style.color = "#b14b4b"; // röd
-                loginMessage.textContent = "Fel användarnamn eller lösenord."; // text
-            }
-        }
+        //         setTimeout(() => { // väntan
+        //             window.location.href = "adminpage.html"; // vidare
+        //         }, 700);
+        //     } else { // fel
+        //         localStorage.removeItem("adminAccess"); // rensa
+        //         loginMessage.style.color = "#b14b4b"; // röd
+        //         loginMessage.textContent = "Fel användarnamn eller lösenord."; // text
+        //     }
+        // }
+
     </script>
 </body>
 </html>

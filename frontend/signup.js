@@ -33,10 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json();
         console.log(data);
   
-        alert("Konto skapat!");
-      } catch (error) {
-        console.error(error);
-        alert("Något gick fel");
-      }
+        if (response.ok) {
+          // Skapa en snygg alert eller meddelande
+          alert("Konto skapat framgångsrikt! Du skickas nu till inloggningen.");
+      // HÄR ÄR FIXEN: Skicka användaren vidare till Login.html
+      window.location.href = "Login.html";
+    } else {
+        // Om backenden skickar ett felmeddelande (t.ex. om mailen redan finns)
+        alert(data.message || "Kunde inte skapa konto.");
+    }
+    
+    } catch (error) {
+    console.error("SIGNUP ERROR:", error);
+    alert("Något gick fel vid anslutningen till servern.");
+    }
     });
   });

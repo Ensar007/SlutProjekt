@@ -52,7 +52,7 @@
             <a href="Slut.html" class="btn-active-teal">Home</a>
             <a href="index.html">Food</a>
             <a href="about.html">About us</a>
-            <a href="Login.html" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
+            <a href="Login.html" id="loginHeaderBtn" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
         </nav>
 
         <div id="mobile-menu" class="mobile-nav">
@@ -67,6 +67,38 @@
     <main style="padding: 0 20px;">
         <div class="placeholder-image">Bild</div>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    // 1. Hitta inloggningsknappen i headern
+    const loginBtn = document.getElementById("loginHeaderBtn");
+    
+    // 2. Kontrollera om användaren har en token (är inloggad)
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        // 3. Om token finns: Ändra texten till Logga ut
+        loginBtn.textContent = "Logga ut";
+        loginBtn.href = "#"; // Gör så att den inte hoppar till Login.html direkt
+        
+        // 4. Lägg till en funktion så att man faktiskt loggas ut när man klickar
+        loginBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            // Ta bort token från minnet
+            localStorage.removeItem("token");
+            
+            // Om du även har sparat adminAccess, ta bort den med
+            localStorage.removeItem("adminAccess");
+            
+            alert("Du har loggats ut!");
+            
+            // Ladda om sidan för att visa "Login" igen
+            window.location.reload();
+        });
+    }
+});
+    </script>
 
 </body>
 </html>

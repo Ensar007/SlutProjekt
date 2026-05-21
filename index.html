@@ -50,7 +50,7 @@
             <!-- AKTIV PÅ FOOD -->
             <a href="index.html" class="btn-active-teal">Food</a>
             <a href="about.html">About us</a>
-            <a href="Login.html" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
+            <a href="Login.html" id="loginHeaderBtn" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
         </nav>
 
         <div id="mobile-menu" class="mobile-nav">
@@ -82,6 +82,36 @@
             <div class="menu-card"></div>
         </div>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Hitta inloggningsknappen på den här specifika sidan
+            const loginBtn = document.getElementById("loginHeaderBtn");
+            
+            // 2. Kolla om det finns en sparad token i webbläsarens minne
+            const token = localStorage.getItem("token");
+        
+            if (token) {
+                // 3. Om token finns, ändra texten till "Logga ut"
+                loginBtn.textContent = "Logga ut";
+                loginBtn.href = "#"; // Hindrar sidan från att hoppa till Login.html när man klickar
+                
+                // 4. Gör så att man faktiskt loggas ut när man klickar
+                loginBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    
+                    // Ta bort inloggningsuppgifterna från webbläsaren
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("adminAccess"); 
+                    
+                    alert("Du har loggats ut!");
+                    
+                    // Ladda om den aktuella sidan så att det står "Login" igen
+                    window.location.reload();
+                });
+            }
+        });
+        </script>
 
 </body>
 </html>
