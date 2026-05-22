@@ -1,318 +1,401 @@
-/* reset */
 * {
-    margin: 0; /* noll */
-    padding: 0; /* noll */
-    box-sizing: border-box; /* mått */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif; /* font */
-    background-color: #ececec; /* bakgrund */
-    color: #111; /* text */
+    font-family: Arial, sans-serif;
+    background-color: #ececec;
+    color: #111;
 }
 
-/* toppbar */
+.toast-message {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0b7c8c;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 3000;
+}
+
+.toast-message.show {
+    opacity: 1;
+    top: 28px;
+}
+
 .admin-topbar {
-    height: 92px; /* höjd */
-    background-color: #f8f8f8; /* ljus */
-    display: flex; /* rad */
-    align-items: center; /* mitten */
-    justify-content: space-between; /* dela */
-    padding: 0 14px; /* luft */
-    border-bottom: 1px solid #ddd; /* linje */
+    height: 92px;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    border-bottom: 1px solid #ddd;
 }
 
 .admin-left {
-    display: flex; /* rad */
-    align-items: center; /* mitten */
-    gap: 18px; /* avstånd */
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
 .menu-btn {
-    width: 56px; /* bredd */
-    height: 56px; /* höjd */
-    background-color: #0b7c8c; /* turkos */
-    border: none; /* ingen kant */
-    display: flex; /* flex */
-    flex-direction: column; /* stapla */
-    justify-content: center; /* mitten */
-    gap: 6px; /* mellanrum */
-    padding: 0 12px; /* luft */
-    cursor: pointer; /* hand */
+    width: 56px;
+    height: 56px;
+    background-color: #0b7c8c;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 12px;
+    cursor: pointer;
 }
 
 .menu-btn span {
-    display: block; /* streck */
-    height: 4px; /* tjock */
-    width: 100%; /* full */
-    background-color: white; /* vit */
-    border-radius: 10px; /* rund */
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
 }
 
-.cart-logo {
-    font-size: 2rem; /* ikon */
-    color: #d5942f; /* guld */
+.cart-logo-link {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #b6b6b6;
 }
 
 .admin-brand {
-    font-size: 1.15rem; /* text */
-    font-weight: 700; /* fet */
-    font-style: italic; /* kursiv */
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-style: italic;
 }
 
 .admin-nav {
-    display: flex; /* rad */
-    gap: 24px; /* avstånd */
+    display: flex;
+    gap: 24px;
 }
 
 .admin-nav a {
-    text-decoration: none; /* ingen linje */
-    color: #111; /* svart */
-    font-size: 0.95rem; /* text */
-    font-weight: 600; /* fet */
+    text-decoration: none;
+    color: #111;
+    font-size: 0.95rem;
+    font-weight: 600;
 }
 
-/* main */
 .admin-page {
-    max-width: 1180px; /* max */
-    margin: 0 auto; /* mitten */
-    padding: 14px 20px 40px; /* luft */
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 14px 20px 40px;
 }
 
 .search-row {
-    display: flex; /* rad */
-    justify-content: space-between; /* dela */
-    align-items: center; /* mitten */
-    margin-bottom: 44px; /* under */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 44px;
 }
 
 .search-box {
-    display: flex; /* rad */
-    align-items: center; /* mitten */
-    gap: 18px; /* avstånd */
-}
-
-.search-icon {
-    width: 44px; /* bredd */
-    height: 44px; /* höjd */
-    background-color: #fff; /* vit */
-    border: 1px solid #ddd; /* kant */
-    display: flex; /* flex */
-    align-items: center; /* mitten */
-    justify-content: center; /* mitten */
-    font-size: 2rem; /* ikon */
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
 .search-box input {
-    width: 310px; /* bredd */
-    border: none; /* ingen kant */
-    border-bottom: 1px solid #555; /* linje */
-    background: transparent; /* genomskinlig */
-    font-size: 1rem; /* text */
-    padding: 8px 6px; /* luft */
-    outline: none; /* ingen glow */
-    text-align: center; /* mitten */
+    width: 310px;
+    border: none;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    font-size: 1rem;
+    padding: 8px 6px;
+    outline: none;
+    text-align: center;
 }
 
 .top-icons {
-    display: flex; /* rad */
-    gap: 18px; /* avstånd */
+    display: flex;
+    gap: 18px;
 }
 
 .icon-box {
-    width: 42px; /* bredd */
-    height: 42px; /* höjd */
-    background-color: #fff; /* vit */
-    border: 1px solid #ddd; /* kant */
-    display: flex; /* flex */
-    align-items: center; /* mitten */
-    justify-content: center; /* mitten */
-    font-size: 1.5rem; /* ikon */
+    width: 42px;
+    height: 42px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #111;
 }
 
-/* kort */
+.top-link:hover {
+    border-color: #0b7c8c;
+    color: #0b7c8c;
+}
+
 .stats-row {
-    display: flex; /* rad */
-    justify-content: center; /* centrum */
-    gap: 64px; /* avstånd */
-    margin-bottom: 70px; /* under */
-    flex-wrap: wrap; /* bryt */
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    margin-bottom: 70px;
+    flex-wrap: wrap;
 }
 
 .stat-card {
-    width: 220px; /* bredd */
-    min-height: 108px; /* höjd */
-    color: white; /* vit */
-    padding: 16px 16px 10px; /* luft */
+    width: 230px;
+    min-height: 125px;
+    color: white;
+    padding: 16px 16px 10px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    opacity: 0.95;
 }
 
 .stat-card h3 {
-    font-size: 1rem; /* titel */
-    margin-bottom: 26px; /* under */
-    font-weight: 600; /* fet */
+    font-size: 1rem;
+    margin-bottom: 26px;
+    font-weight: 600;
 }
 
 .blue-card {
-    background-color: #4a5cff; /* blå */
+    background-color: #4a5cff;
 }
 
 .green-card {
-    background-color: #04df2d; /* grön */
+    background-color: #04df2d;
 }
 
 .red-card {
-    background-color: #ff2c2c; /* röd */
+    background-color: #ff2c2c;
 }
 
 .stat-footer {
-    display: flex; /* rad */
-    justify-content: space-between; /* dela */
-    align-items: flex-end; /* botten */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .stat-icon {
-    font-size: 1.8rem; /* ikon */
-    background-color: #fff; /* vit */
-    color: #111; /* svart */
-    padding: 2px 6px; /* luft */
+    font-size: 1.8rem;
+    background-color: #fff;
+    color: #111;
+    padding: 4px 8px;
 }
 
 .stat-info {
-    text-align: right; /* höger */
+    text-align: right;
 }
 
 .stat-info strong {
-    display: block; /* rad */
-    font-size: 2rem; /* stor */
-    line-height: 1; /* tät */
+    display: block;
+    font-size: 2.2rem;
+    line-height: 1;
 }
 
 .stat-info p {
-    font-size: 0.75rem; /* liten */
-    margin-top: 4px; /* under */
+    font-size: 0.8rem;
+    margin-top: 4px;
 }
 
-/* paneler */
 .bottom-panels {
-    display: flex; /* rad */
-    justify-content: center; /* centrum */
-    gap: 80px; /* avstånd */
-    flex-wrap: wrap; /* bryt */
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
 }
 
 .panel {
-    width: 280px; /* bredd */
-    background: transparent; /* tom */
+    width: 320px;
 }
 
 .panel-header {
-    height: 48px; /* höjd */
-    border: 1px solid #8d8d8d; /* kant */
-    background-color: #f7f7f7; /* ljus */
-    display: flex; /* rad */
-    align-items: center; /* mitten */
-    gap: 10px; /* avstånd */
-    padding: 0 12px; /* luft */
+    height: 48px;
+    border: 1px solid #8d8d8d;
+    background-color: #f7f7f7;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
 }
 
 .panel-header h4 {
-    font-size: 1rem; /* text */
-    font-weight: 600; /* fet */
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .panel-body {
-    height: 135px; /* höjd */
-    background-color: white; /* vit */
-    border-left: 1px solid #cfcfcf; /* kant */
-    border-right: 1px solid #cfcfcf; /* kant */
-    border-bottom: 1px solid #cfcfcf; /* kant */
+    min-height: 180px;
+    background-color: white;
+    border-left: 1px solid #cfcfcf;
+    border-right: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+    padding: 18px;
 }
 
-/* sidomeny */
+.chart-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chart-bars {
+    height: 110px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.bar {
+    width: 100%;
+    max-width: 34px;
+    border-radius: 8px 8px 0 0;
+}
+
+.bar.teal {
+    background: linear-gradient(180deg, #19aaba 0%, #0b7c8c 100%);
+}
+
+.panel-note {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+}
+
+.notification-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-notifications {
+    text-align: center;
+}
+
+.empty-notifications p {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.empty-notifications span {
+    font-size: 0.85rem;
+    color: #777;
+}
+
 .side-menu {
-    position: fixed; /* fast */
-    top: 0; /* topp */
-    left: -270px; /* gömd */
-    width: 250px; /* bredd */
-    height: 100%; /* full */
-    background-color: #ffffff; /* vit */
-    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15); /* skugga */
-    transition: left 0.3s ease; /* glid */
-    z-index: 2000; /* överst */
-    padding: 20px; /* luft */
+    position: fixed;
+    top: 0;
+    left: -270px;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+    transition: left 0.3s ease;
+    z-index: 2000;
+    padding: 20px;
 }
 
 .side-menu.active {
-    left: 0; /* visa */
+    left: 0;
 }
 
 .side-menu-header {
-    display: flex; /* rad */
-    align-items: center; /* mitten */
-    justify-content: space-between; /* dela */
-    margin-bottom: 24px; /* under */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
 }
 
 .close-menu {
-    border: none; /* ingen */
-    background: none; /* ingen */
-    font-size: 2rem; /* stor */
-    cursor: pointer; /* hand */
+    border: none;
+    background: none;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 .side-menu-links {
-    display: flex; /* flex */
-    flex-direction: column; /* kolumn */
-    gap: 14px; /* avstånd */
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 .side-menu-links a {
-    text-decoration: none; /* ingen linje */
-    color: #111; /* svart */
-    font-weight: 600; /* fet */
+    text-decoration: none;
+    color: #111;
+    font-weight: 600;
 }
 
 .admin-only-link {
-    color: #0b7c8c; /* admin */
+    color: #0b7c8c;
 }
 
 .menu-overlay {
-    position: fixed; /* fast */
-    inset: 0; /* full */
-    background: rgba(0, 0, 0, 0.25); /* mörk */
-    opacity: 0; /* dold */
-    visibility: hidden; /* dold */
-    transition: 0.3s ease; /* fade */
-    z-index: 1500; /* lager */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 1500;
 }
 
 .menu-overlay.active {
-    opacity: 1; /* visa */
-    visibility: visible; /* visa */
+    opacity: 1;
+    visibility: visible;
 }
 
-/* mobil */
 @media (max-width: 900px) {
     .admin-topbar {
-        flex-wrap: wrap; /* bryt */
-        height: auto; /* auto */
-        padding: 14px; /* luft */
-        gap: 16px; /* avstånd */
+        flex-wrap: wrap;
+        height: auto;
+        padding: 14px;
+        gap: 16px;
     }
 
     .admin-nav {
-        width: 100%; /* full */
-        justify-content: center; /* mitten */
-        flex-wrap: wrap; /* bryt */
-        gap: 14px; /* avstånd */
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
     }
 
     .search-row {
-        flex-direction: column; /* stapla */
-        gap: 20px; /* avstånd */
+        flex-direction: column;
+        gap: 20px;
     }
 
     .search-box input {
-        width: 220px; /* mindre */
+        width: 220px;
     }
 }

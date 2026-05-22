@@ -1,159 +1,216 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8"> <!-- tecken -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- mobil -->
-    <title>Admin Panel</title> <!-- titel -->
-    <link rel="stylesheet" href="adminpage.css"> <!-- css -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="adminpage.css">
 </head>
 <body>
 
-    <!-- skydda sida -->
     <script>
-        const isAdminLoggedIn = localStorage.getItem("adminAccess") === "true"; // koll
-
-        if (!isAdminLoggedIn) { // ej admin
-            window.location.href = "Login.html"; // tillbaka
+        const isAdminLoggedIn = localStorage.getItem("adminAccess") === "true";
+        if (!isAdminLoggedIn) {
+            window.location.href = "Login.html";
         }
     </script>
 
-    <!-- sidomeny -->
+    <div id="toastMessage" class="toast-message">Sidan har uppdaterats</div>
+
     <aside class="side-menu" id="sideMenu">
         <div class="side-menu-header">
-            <h2>Menu</h2> <!-- rubrik -->
-            <button class="close-menu" id="closeMenu" aria-label="Stäng meny">&times;</button> <!-- stäng -->
+            <h2>Menu</h2>
+            <button class="close-menu" id="closeMenu" aria-label="Stäng meny">&times;</button>
         </div>
 
         <nav class="side-menu-links">
-            <a href="Slut.html">Home</a> <!-- hem -->
-            <a href="#">Food</a> <!-- mat -->
-            <a href="Slut3.html">About us</a> <!-- about -->
-            <a href="Login.html">Login</a> <!-- login -->
-            <a href="adminpage.html" id="adminPanelLink" class="admin-only-link">Admin Panel</a> <!-- admin -->
+            <a href="Slut.html">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="Login.html">Login</a>
+            <a href="adminpage.html" id="adminPanelLink" class="admin-only-link">Admin Panel</a>
         </nav>
     </aside>
 
-    <!-- overlay -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- toppbar -->
     <header class="admin-topbar">
         <div class="admin-left">
-            <button class="menu-btn" id="openMenu" aria-label="Öppna meny"> <!-- meny -->
+            <button class="menu-btn" id="openMenu" aria-label="Öppna meny">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <div class="cart-logo">🛒</div> <!-- ikon -->
+            <a href="ShoppingCart2.html" class="cart-logo-link">🛒</a>
         </div>
 
-        <div class="admin-brand">(Namn på vår restaurang)</div> <!-- namn -->
+        <div class="admin-brand">(Namn på vår restaurang)</div>
 
         <nav class="admin-nav">
-            <a href="Slut.html">Home</a> <!-- hem -->
-            <a href="#">Food</a> <!-- mat -->
-            <a href="about.html">About us</a> <!-- about -->
-            <a href="Login.html">Login</a> <!-- login -->
+            <a href="Slut.html">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="Login.html">Login</a>
         </nav>
     </header>
 
-    <!-- innehåll -->
     <main class="admin-page">
         <section class="search-row">
             <div class="search-box">
-                <span class="search-icon">⌕</span> <!-- sök -->
-                <input type="text" placeholder="Type to search"> <!-- input -->
+                <a href="Slut.html" class="icon-box top-link" aria-label="Gå till startsidan">⌂</a>
+                <input type="text" placeholder="Type to search">
             </div>
 
             <div class="top-icons">
-                <div class="icon-box">⌂</div> <!-- github/plats -->
-                <div class="icon-box">🔔</div> <!-- notis -->
-                <div class="icon-box">🧍</div> <!-- profil -->
+                <a href="about.html" class="icon-box top-link" aria-label="Gå till About us">🧍</a>
             </div>
         </section>
 
         <section class="stats-row">
-            <div class="stat-card blue-card">
-                <h3>Sign ups</h3> <!-- titel -->
+            <button class="stat-card blue-card refresh-card" data-target="signups">
+                <h3>Sign ups</h3>
                 <div class="stat-footer">
-                    <span class="stat-icon">🧍</span> <!-- ikon -->
+                    <span class="stat-icon">🧍</span>
                     <div class="stat-info">
-                        <strong>49</strong> <!-- siffra -->
-                        <p>25% from last month</p> <!-- text -->
+                        <strong id="signupsValue">49</strong>
+                        <p>25% from last month</p>
                     </div>
                 </div>
-            </div>
+            </button>
 
-            <div class="stat-card green-card">
-                <h3>Revenue</h3> <!-- titel -->
+            <button class="stat-card green-card refresh-card" data-target="revenue">
+                <h3>Revenue</h3>
                 <div class="stat-footer">
-                    <span class="stat-icon">🛒</span> <!-- ikon -->
+                    <span class="stat-icon">🛒</span>
                     <div class="stat-info">
-                        <strong>4920$</strong> <!-- siffra -->
-                        <p>17,5% from last month</p> <!-- text -->
+                        <strong id="revenueValue">4920$</strong>
+                        <p>17,5% from last month</p>
                     </div>
                 </div>
-            </div>
+            </button>
 
-            <div class="stat-card red-card">
-                <h3>Open tickets</h3> <!-- titel -->
+            <button class="stat-card red-card refresh-card" data-target="tickets">
+                <h3>Open tickets</h3>
                 <div class="stat-footer">
-                    <span class="stat-icon">☎</span> <!-- ikon -->
+                    <span class="stat-icon">☎</span>
                     <div class="stat-info">
-                        <strong>19</strong> <!-- siffra -->
-                        <p>&nbsp;</p> <!-- tom -->
+                        <strong id="ticketsValue">19</strong>
+                        <p>Updated just now</p>
                     </div>
                 </div>
-            </div>
+            </button>
         </section>
 
         <section class="bottom-panels">
             <div class="panel">
                 <div class="panel-header">
-                    <span>◔</span> <!-- ikon -->
-                    <h4>Bar chart</h4> <!-- titel -->
+                    <span>◔</span>
+                    <h4>Bar chart</h4>
                 </div>
-                <div class="panel-body"></div> <!-- tom -->
+
+                <div class="panel-body chart-panel">
+                    <div class="chart-bars">
+                        <div class="bar-group">
+                            <div class="bar teal" style="height: 55%;"></div>
+                            <span>Mon</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar teal" style="height: 78%;"></div>
+                            <span>Tue</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar teal" style="height: 62%;"></div>
+                            <span>Wed</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar teal" style="height: 88%;"></div>
+                            <span>Thu</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar teal" style="height: 70%;"></div>
+                            <span>Fri</span>
+                        </div>
+                    </div>
+                    <p class="panel-note">Veckostatistik över aktivitet i panelen.</p>
+                </div>
             </div>
 
             <div class="panel">
                 <div class="panel-header">
-                    <span>🔔</span> <!-- ikon -->
-                    <h4>Notifications</h4> <!-- titel -->
+                    <span>🔔</span>
+                    <h4>Notifications</h4>
                 </div>
-                <div class="panel-body"></div> <!-- tom -->
+
+                <div class="panel-body notification-panel">
+                    <div class="empty-notifications">
+                        <p>Du har inga notifikationer just nu.</p>
+                        <span>Allt är uppdaterat.</span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <script>
-        const openMenu = document.getElementById("openMenu"); // öppna
-        const closeMenu = document.getElementById("closeMenu"); // stäng
-        const sideMenu = document.getElementById("sideMenu"); // meny
-        const menuOverlay = document.getElementById("menuOverlay"); // overlay
-        const adminPanelLink = document.getElementById("adminPanelLink"); // admin
+        const openMenu = document.getElementById("openMenu");
+        const closeMenu = document.getElementById("closeMenu");
+        const sideMenu = document.getElementById("sideMenu");
+        const menuOverlay = document.getElementById("menuOverlay");
+        const adminPanelLink = document.getElementById("adminPanelLink");
+        const toastMessage = document.getElementById("toastMessage");
 
-        openMenu.addEventListener("click", () => { // öppna meny
-            sideMenu.classList.add("active"); // visa
-            menuOverlay.classList.add("active"); // visa
+        openMenu.addEventListener("click", () => {
+            sideMenu.classList.add("active");
+            menuOverlay.classList.add("active");
         });
 
-        closeMenu.addEventListener("click", () => { // stäng meny
-            sideMenu.classList.remove("active"); // dölj
-            menuOverlay.classList.remove("active"); // dölj
+        closeMenu.addEventListener("click", () => {
+            sideMenu.classList.remove("active");
+            menuOverlay.classList.remove("active");
         });
 
-        menuOverlay.addEventListener("click", () => { // klick utanför
-            sideMenu.classList.remove("active"); // dölj
-            menuOverlay.classList.remove("active"); // dölj
+        menuOverlay.addEventListener("click", () => {
+            sideMenu.classList.remove("active");
+            menuOverlay.classList.remove("active");
         });
 
-        if (isAdminLoggedIn) { // visa admin
-            adminPanelLink.style.display = "block"; // block
-        } else { // dölj admin
-            adminPanelLink.style.display = "none"; // none
+        if (isAdminLoggedIn) {
+            adminPanelLink.style.display = "block";
+        } else {
+            adminPanelLink.style.display = "none";
         }
+
+        function showToast() {
+            toastMessage.classList.add("show");
+            setTimeout(() => {
+                toastMessage.classList.remove("show");
+            }, 2200);
+        }
+
+        function randomBetween(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        document.querySelectorAll(".refresh-card").forEach(card => {
+            card.addEventListener("click", () => {
+                const target = card.dataset.target;
+
+                if (target === "signups") {
+                    document.getElementById("signupsValue").textContent = randomBetween(40, 70);
+                }
+
+                if (target === "revenue") {
+                    document.getElementById("revenueValue").textContent = randomBetween(4300, 6200) + "$";
+                }
+
+                if (target === "tickets") {
+                    document.getElementById("ticketsValue").textContent = randomBetween(10, 30);
+                }
+
+                showToast();
+            });
+        });
     </script>
 </body>
 </html>
