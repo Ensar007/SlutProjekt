@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Login</title> <link rel="stylesheet" href="Login.css"> </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
 <body class="login-page-body">
 
     <aside class="login-side-menu" id="loginSideMenu">
         <div class="login-side-header">
-            <h2>Menu</h2> <button class="login-close-menu" id="loginCloseMenu" aria-label="Stäng meny">&times;</button> </div>
+            <h2>Menu</h2>
+            <button class="login-close-menu" id="loginCloseMenu" aria-label="Stäng meny">&times;</button>
+        </div>
 
         <nav class="login-side-links">
-            <a href="Slut.html">Home</a> <a href="index.html">Food</a> <a href="about.html">About us</a> <a href="Login.html">Login</a> <a href="adminpage.html" id="loginAdminLink" style="display: none;">Admin Panel</a> 
+            <a href="Slut.html">Home</a>
+            <a href="index.html">Food</a>
+            <a href="about.html">About us</a>
+            <a href="Login.html">Login</a>
+            <a href="adminpage.html" id="loginAdminLink" style="display: none;">Admin Panel</a>
         </nav>
     </aside>
 
@@ -17,26 +27,44 @@
 
     <nav class="login-topbar">
         <div class="login-topbar-left">
-            <button class="login-menu-btn" id="loginOpenMenu" type="button" aria-label="Öppna meny"> <span></span>
+            <button class="login-menu-btn" id="loginOpenMenu" type="button" aria-label="Öppna meny">
+                <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <a href="ShoppingCart2.html" style="text-decoration: none; font-size: 20px;">🛒</a> </div>
+            <a href="ShoppingCart2.html" style="text-decoration: none; font-size: 20px;">🛒</a>
+        </div>
 
-        <div class="login-brand">Vår restaurang</div> <div class="login-topbar-nav"> <a href="Slut.html">Home</a>
+        <div class="login-brand">Vår restaurang</div>
+
+        <div class="login-topbar-nav">
+            <a href="Slut.html">Home</a>
             <a href="index.html">Food</a>
             <a href="about.html">About us</a>
-            <a href="Login.html" id="loginHeaderBtn" class="active">Login</a> </div>
+            <a href="Login.html" id="loginHeaderBtn" class="active">Login</a>
+        </div>
     </nav>
 
     <main class="login-main">
         <section class="login-card">
             <div class="login-header">
-                <div class="login-user-icon">👤</div> <p>Enter your info to log in to your account</p> </div>
+                <div class="login-user-icon">👤</div>
+                <p>Enter your info to log in to your account</p>
+            </div>
 
-            <form class="login-form"> 
-                <label for="username">Email</label> <input type="text" id="username" name="username" required> <label for="password">Password:</label> <input type="password" id="password" name="password" required> <button type="submit" class="login-submit-btn">Log in</button> <p id="loginMessage" class="login-message"></p> <div class="login-signup">
+            <form class="login-form" id="loginForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="login-submit-btn">Log in</button>
+
+                <p id="loginMessage" class="login-message"></p>
+
+                <div class="login-signup">
                     <p>Don't have an account?</p>
                     <a href="signup.html">Sign up here</a>
                 </div>
@@ -45,55 +73,89 @@
     </main>
 
     <script>
-        const loginOpenMenu = document.getElementById("loginOpenMenu"); 
-        const loginCloseMenu = document.getElementById("loginCloseMenu"); 
-        const loginSideMenu = document.getElementById("loginSideMenu"); 
-        const loginMenuOverlay = document.getElementById("loginMenuOverlay"); 
-        const loginAdminLink = document.getElementById("loginAdminLink"); 
+        const loginOpenMenu = document.getElementById("loginOpenMenu");
+        const loginCloseMenu = document.getElementById("loginCloseMenu");
+        const loginSideMenu = document.getElementById("loginSideMenu");
+        const loginMenuOverlay = document.getElementById("loginMenuOverlay");
+        const loginAdminLink = document.getElementById("loginAdminLink");
         const loginHeaderBtn = document.getElementById("loginHeaderBtn");
+        const loginForm = document.getElementById("loginForm");
+        const loginMessage = document.getElementById("loginMessage");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
 
-        // Öppna och stäng sidomeny
-        loginOpenMenu.addEventListener("click", () => { 
-            loginSideMenu.classList.add("active"); 
-            loginMenuOverlay.classList.add("active"); 
+        loginOpenMenu.addEventListener("click", () => {
+            loginSideMenu.classList.add("active");
+            loginMenuOverlay.classList.add("active");
         });
 
-        loginCloseMenu.addEventListener("click", () => { 
-            loginSideMenu.classList.remove("active"); 
-            loginMenuOverlay.classList.remove("active"); 
+        loginCloseMenu.addEventListener("click", () => {
+            loginSideMenu.classList.remove("active");
+            loginMenuOverlay.classList.remove("active");
         });
 
-        loginMenuOverlay.addEventListener("click", () => { 
-            loginSideMenu.classList.remove("active"); 
-            loginMenuOverlay.classList.remove("active"); 
+        loginMenuOverlay.addEventListener("click", () => {
+            loginSideMenu.classList.remove("active");
+            loginMenuOverlay.classList.remove("active");
         });
 
-        // Kontrollera inloggningsstatus när sidan laddas
-        document.addEventListener("DOMContentLoaded", () => {
+        function updateLoginState() {
             const token = localStorage.getItem("token");
             const isAdmin = localStorage.getItem("adminAccess") === "true";
 
-            // Om admin är inloggad, visa admin-länkar
             if (isAdmin) {
-                if (loginAdminLink) loginAdminLink.style.display = "block";
+                loginAdminLink.style.display = "block";
+            } else {
+                loginAdminLink.style.display = "none";
             }
 
-            // Hantera "Logga ut"-funktionen i headern
-            if (token && loginHeaderBtn) {
+            if (token) {
                 loginHeaderBtn.textContent = "Logga ut";
                 loginHeaderBtn.href = "#";
-                
-                loginHeaderBtn.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("adminAccess");
-                    alert("Du har loggats ut!");
-                    window.location.reload(); // Laddar om sidan så menyn uppdateras
-                });
+                loginHeaderBtn.classList.add("active");
+            } else {
+                loginHeaderBtn.textContent = "Login";
+                loginHeaderBtn.href = "Login.html";
+                loginHeaderBtn.classList.add("active");
+            }
+        }
+
+        loginHeaderBtn.addEventListener("click", function (e) {
+            const token = localStorage.getItem("token");
+
+            if (token) {
+                e.preventDefault();
+                localStorage.removeItem("token");
+                localStorage.removeItem("adminAccess");
+                alert("Du har loggats ut!");
+                updateLoginState();
+                window.location.href = "Login.html";
             }
         });
-    </script>
 
-    <script src="Login.js"></script>
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (username === "test" && password === "123") {
+                localStorage.setItem("token", "loggedIn");
+                localStorage.setItem("adminAccess", "true");
+                loginMessage.style.color = "green";
+                loginMessage.textContent = "Inloggning lyckades!";
+                updateLoginState();
+
+                setTimeout(() => {
+                    window.location.href = "adminpage.html";
+                }, 700);
+            } else {
+                loginMessage.style.color = "red";
+                loginMessage.textContent = "Fel användarnamn eller lösenord.";
+            }
+        });
+
+        updateLoginState();
+    </script>
 </body>
 </html>
