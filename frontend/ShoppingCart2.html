@@ -4,50 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varukorg - Vår Restaurang</title>
-    <style>
-        :root { --brand-teal: #007A8A; }
-        body { background-color: #f4f5f5; margin: 0; padding: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
-
-        .global-header { background-color: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 1px solid #ddd; position: relative; z-index: 1000; }
-        .header-left { display: flex; align-items: center; gap: 15px; }
-        .custom-hamburger { background: var(--brand-teal); border: none; padding: 8px 10px; border-radius: 4px; display: flex; flex-direction: column; gap: 4px; cursor: pointer; }
-        .custom-hamburger span { display: block; width: 22px; height: 3px; background: white; }
-        .logo-cart { font-size: 28px; text-decoration: none; color: inherit; }
-        .restaurant-name { font-size: 18px; font-style: italic; font-weight: bold; color: #000; margin: 0; }
-
-        .header-right { display: flex; gap: 10px; align-items: center; }
-        .header-right a { text-decoration: none; color: #000; font-size: 14px; font-weight: bold; font-style: italic; padding: 8px 20px; border-radius: 8px; transition: 0.2s; }
-        .header-right a:hover { background: #f1f1f1; }
-        .btn-active-teal { background-color: var(--brand-teal) !important; color: white !important; font-style: normal !important; }
-
-        .mobile-nav { display: none; flex-direction: column; background-color: #ffffff; width: 100%; position: absolute; top: 100%; left: 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
-        .mobile-nav a { padding: 15px 30px; text-decoration: none; color: #000; font-weight: bold; border-bottom: 1px solid #eee; }
-        @media (max-width: 991px) { .header-right { display: none; } }
-
-        .cart-page { padding: 40px 20px; max-width: 1100px; margin: 0 auto; width: 100%; }
-        .page-title { margin-bottom: 30px; font-style: italic; text-align: center; }
-        .cart-layout { display: grid; grid-template-columns: 1fr 350px; gap: 30px; }
-        @media (max-width: 900px) { .cart-layout { grid-template-columns: 1fr; } }
-
-        .cart-items-section, .summary-card { background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #dcdcdc; }
-        .cart-table { width: 100%; border-collapse: collapse; }
-        .cart-table th { text-align: left; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0; }
-        .cart-table td { padding: 20px 0; border-bottom: 1px solid #f0f0f0; }
-        .product-info { display: flex; align-items: center; gap: 15px; }
-        .product-img-placeholder { width: 60px; height: 60px; background: #f4f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-        .quantity-picker { display: flex; align-items: center; background: #f8f8f8; border-radius: 6px; border: 1px solid #ddd; width: fit-content; }
-        .qty-btn { border: none; background: transparent; padding: 8px 12px; cursor: pointer; color: var(--brand-teal); font-weight: bold; }
-        .qty-value { padding: 0 10px; font-weight: bold; }
-        .remove-item { border: none; background: none; color: #ff5e5e; cursor: pointer; font-weight: bold; }
-
-        .summary-row { display: flex; justify-content: space-between; margin-bottom: 12px; }
-        .summary-row.total { font-size: 1.2rem; font-weight: bold; color: var(--brand-teal); margin-top: 15px; }
-        .payment-option { display: flex; align-items: center; gap: 12px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; }
-        .payment-option:hover { border-color: var(--brand-teal); }
-        .payment-option input { accent-color: var(--brand-teal); }
-        .place-order-btn { width: 100%; background-color: var(--brand-teal); color: white; border: none; padding: 16px; border-radius: 20px; font-weight: bold; margin-top: 20px; cursor: pointer; }
-        .place-order-btn:hover { background-color: #005f6b; }
-    </style>
+    <link rel="stylesheet" href="ShoppingCart2.css">
 </head>
 <body>
 
@@ -57,7 +14,7 @@
                 <span></span><span></span><span></span>
             </button>
             <a href="ShoppingCart2.html" class="logo-cart">🛒</a>
-            <h1 class="restaurant-name">(Namn på vår resturang)</h1>
+            <h1 class="restaurant-name">Vår restaurang</h1>
         </div>
 
         <nav class="header-right">
@@ -92,44 +49,6 @@
                         </tr>
                     </thead>
                     <tbody id="cart-body">
-                        <tr class="cart-item">
-                            <td class="product-info">
-                                <div class="product-img-placeholder">🍕</div>
-                                <div>
-                                    <p class="product-name" style="font-weight:bold;">Margherita Pizza</p>
-                                    <p class="product-meta" style="font-size:12px; color:#666;">Standard storlek</p>
-                                </div>
-                            </td>
-                            <td class="unit-price" data-price="129">129 kr</td>
-                            <td>
-                                <div class="quantity-picker">
-                                    <button class="qty-btn minus">-</button>
-                                    <span class="qty-value">1</span>
-                                    <button class="qty-btn plus">+</button>
-                                </div>
-                            </td>
-                            <td class="subtotal-price">129 kr</td>
-                            <td><button class="remove-item">✕</button></td>
-                        </tr>
-                        <tr class="cart-item">
-                            <td class="product-info">
-                                <div class="product-img-placeholder">🍔</div>
-                                <div>
-                                    <p class="product-name" style="font-weight:bold;">Classic Burger</p>
-                                    <p class="product-meta" style="font-size:12px; color:#666;">+ Extra Bacon</p>
-                                </div>
-                            </td>
-                            <td class="unit-price" data-price="145">145 kr</td>
-                            <td>
-                                <div class="quantity-picker">
-                                    <button class="qty-btn minus">-</button>
-                                    <span class="qty-value">2</span>
-                                    <button class="qty-btn plus">+</button>
-                                </div>
-                            </td>
-                            <td class="subtotal-price">290 kr</td>
-                            <td><button class="remove-item">✕</button></td>
-                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -137,10 +56,10 @@
             <aside class="checkout-sidebar">
                 <div class="summary-card">
                     <h3 style="margin-bottom: 20px;">Orderöversikt</h3>
-                    <div class="summary-row"><span>Delsumma</span><span id="cart-subtotal">419 kr</span></div>
-                    <div class="summary-row"><span>Leveransavgift</span><span id="cart-delivery">39 kr</span></div>
+                    <div class="summary-row"><span>Delsumma</span><span id="cart-subtotal">0 kr</span></div>
+                    <div class="summary-row"><span>Leveransavgift</span><span id="cart-delivery">0 kr</span></div>
                     <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-                    <div class="summary-row total"><span>Totalt att betala</span><span id="cart-total">458 kr</span></div>
+                    <div class="summary-row total"><span>Totalt att betala</span><span id="cart-total">0 kr</span></div>
 
                     <div style="margin-top: 25px;">
                         <h4 style="margin-bottom: 15px; font-size: 0.9rem; color: #888;">BETALSÄTT</h4>
@@ -162,13 +81,14 @@
                         </label>
                     </div>
 
-                    <button id="checkout-btn" class="place-order-btn">Slutför köp (458 kr)</button>
+                    <button id="checkout-btn" class="place-order-btn">Slutför köp (0 kr)</button>
                 </div>
             </aside>
         </div>
     </main>
 
     <script>
+        // Enkel funktion för att visa/dölja mobilmenyn
         function toggleMobileMenu() {
             const m = document.getElementById('mobile-menu');
             m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
@@ -176,57 +96,103 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             const cartBody = document.getElementById('cart-body');
-            const deliveryFee = 39;
+            const deliveryFee = 39; // Fast leveransavgift
 
-            function updateTotals() {
+            // HÄMTA DATAN: Öppnar webbläsarens minne ("localStorage") och hämtar det som "Food"-sidan sparade!
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // HUVUDFUNKTION: Ritar upp varukorgen. Denna körs varje gång vi ändrar något.
+            function renderCart() {
+                cartBody.innerHTML = ''; // Rensar tabellen först så vi kan rita upp den på nytt
                 let subtotal = 0;
-                document.querySelectorAll('.cart-item').forEach(item => {
-                    const price = parseFloat(item.querySelector('.unit-price').getAttribute('data-price'));
-                    const qty = parseInt(item.querySelector('.qty-value').textContent);
-                    const itemTotal = price * qty;
-                    item.querySelector('.subtotal-price').textContent = itemTotal + ' kr';
-                    subtotal += itemTotal;
-                });
 
+                // Om varukorgen är tom, visa ett meddelande
+                if (cart.length === 0) {
+                    cartBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px;">Din varukorg är tom. Gå till Food för att handla!</td></tr>';
+                } else {
+                    // Loopar igenom varje produkt i vår varukorg
+                    cart.forEach((item, index) => {
+                        let itemTotal = item.price * item.quantity; // Räknar ut totalpris för just denna rad
+                        subtotal += itemTotal; // Lägger till i totalsumman
+
+                        // Skriver ut HTML-koden för raden. Använder backticks (`) för att kunna stoppa in variabler (t.ex. ${item.name})
+                        cartBody.innerHTML += `
+                            <tr class="cart-item">
+                                <td class="product-info">
+                                    <div class="product-img-placeholder">🍽️</div>
+                                    <div>
+                                        <p class="product-name" style="font-weight:bold;">${item.name}</p>
+                                    </div>
+                                </td>
+                                <td class="unit-price">${item.price} kr</td>
+                                <td>
+                                    <div class="quantity-picker">
+                                        <button class="qty-btn minus" data-index="${index}">-</button>
+                                        <span class="qty-value">${item.quantity}</span>
+                                        <button class="qty-btn plus" data-index="${index}">+</button>
+                                    </div>
+                                </td>
+                                <td class="subtotal-price">${itemTotal} kr</td>
+                                <td><button class="remove-item" data-index="${index}">✕</button></td>
+                            </tr>
+                        `;
+                    });
+                }
+
+                // Beräkna kostnader. Ingen mat = ingen leveransavgift.
                 const currentDelivery = subtotal > 0 ? deliveryFee : 0;
                 const total = subtotal + currentDelivery;
 
+                // Uppdaterar siffrorna i orderöversikten (på höger sida)
                 document.getElementById('cart-subtotal').textContent = subtotal + ' kr';
                 document.getElementById('cart-delivery').textContent = currentDelivery + ' kr';
                 document.getElementById('cart-total').textContent = total + ' kr';
                 document.getElementById('checkout-btn').textContent = `Slutför köp (${total} kr)`;
+
+                // Spara de nya ändringarna tillbaka till webbläsarens minne
+                localStorage.setItem('cart', JSON.stringify(cart));
             }
 
+            // EVENT-LYSSNARE FÖR TABELLEN: Lyssnar om man klickar på plus, minus eller ta bort (kryss)
             cartBody.addEventListener('click', (e) => {
-                if (e.target.classList.contains('remove-item')) {
-                    e.target.closest('.cart-item').remove();
-                    updateTotals();
-                }
+                const index = e.target.getAttribute('data-index');
 
-                if (e.target.classList.contains('plus')) {
-                    let qtySpan = e.target.previousElementSibling;
-                    qtySpan.textContent = parseInt(qtySpan.textContent) + 1;
-                    updateTotals();
-                }
-
-                if (e.target.classList.contains('minus')) {
-                    let qtySpan = e.target.nextElementSibling;
-                    let currentQty = parseInt(qtySpan.textContent);
-                    if (currentQty > 1) {
-                        qtySpan.textContent = currentQty - 1;
-                    } else {
-                        e.target.closest('.cart-item').remove();
+                if (index !== null) {
+                    if (e.target.classList.contains('remove-item')) {
+                        cart.splice(index, 1); // Tar bort produkten helt från listan
                     }
-                    updateTotals();
+
+                    if (e.target.classList.contains('plus')) {
+                        cart[index].quantity += 1; // Ökar antalet
+                    }
+
+                    if (e.target.classList.contains('minus')) {
+                        if (cart[index].quantity > 1) {
+                            cart[index].quantity -= 1; // Minskar antalet
+                        } else {
+                            cart.splice(index, 1); // Om antalet var 1 och man trycker minus, ta bort produkten
+                        }
+                    }
+
+                    renderCart(); // Rita upp tabellen på nytt med de nya siffrorna!
                 }
             });
 
+            // KNAPP FÖR BETALNING: Hanterar vad som händer när man trycker på "Slutför köp"
             document.getElementById('checkout-btn').addEventListener('click', () => {
+                if (cart.length === 0) {
+                    alert("Varukorgen är tom!");
+                    return; // Avbryter funktionen så vi inte går vidare till betalning
+                }
+
+                // Kollar vilket betalsätt som är ikryssat
                 const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
                 const totalText = document.getElementById('cart-total').textContent;
 
+                // Sparar totalsumman i minnet så att betalsidan kan visa hur mycket man ska betala
                 localStorage.setItem('orderTotal', totalText);
 
+                // Skickar användaren till rätt betalsida beroende på valt alternativ
                 if (selectedPayment === 'swish') {
                     window.location.href = 'swishpayment.html';
                 } else {
@@ -234,7 +200,8 @@
                 }
             });
 
-            updateTotals();
+            // Kallar på funktionen en första gång när sidan laddas för att rita upp innehållet
+            renderCart();
         });
     </script>
 </body>

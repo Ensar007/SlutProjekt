@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("ridwan somna")
+    // Hämta signup-formuläret när DOM är redo
     const form = document.getElementById("signupForm");
   
     form.addEventListener("submit", async (e) => {
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const username = firstName + " " + lastName;
       console.log(firstName)
       try {
+        // Skicka nytt konto till backend via POST /signup
         const response = await fetch("http://localhost:3010/signup", {
           method: "POST",
           headers: {

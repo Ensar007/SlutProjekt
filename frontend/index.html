@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food - Vår Restaurang</title>
-    <style>
+   <style>
         :root { --brand-teal: #007A8A; }
         body { background-color: #f4f5f5; margin: 0; padding: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
         
@@ -22,37 +22,82 @@
         
         .mobile-nav { display: none; flex-direction: column; background-color: #ffffff; width: 100%; position: absolute; top: 100%; left: 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
         .mobile-nav a { padding: 15px 30px; text-decoration: none; color: #000; font-weight: bold; border-bottom: 1px solid #eee; }
+        /* Media Query: Om skärmen är mindre än 991px döljer vi vanliga menyn (hamburgermenyn tar över) */
         @media (max-width: 991px) { .header-right { display: none; } }
 
         /* Sidans innehåll */
         main { max-width: 900px; margin: 40px auto; padding: 0 20px; width: 100%; }
         .section-title { text-align: center; font-style: italic; font-size: 22px; margin-bottom: 25px; }
+        
         .filter-buttons { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
         .filter-btn { background-color: #ffffff; border: 1px solid #ddd; padding: 8px 24px; border-radius: 20px; font-weight: bold; font-style: italic; cursor: pointer; font-size: 13px; }
         .filter-btn.active { background-color: var(--brand-teal); color: white; border-color: var(--brand-teal); }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .menu-card { background-color: #ffffff; border-radius: 8px; height: 120px; border: 1px solid #dcdcdc; }
+        
+        /* RUTNÄT FÖR KORTEN CSS Grid anpassar automatiskt hur många kort som får plats i bredd per rad */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        
+        /* CSS FÖR BURGARKORTEN */
+        .menu-card { 
+            background-color: #ffffff; 
+            border-radius: 8px; 
+            border: 1px solid #dcdcdc; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03); 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .burger-img { 
+            width: 100%; 
+            height: 180px; 
+            object-fit: cover; 
+            background-color: #eaeaea; 
+        }
+        .card-info { 
+            padding: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 8px; 
+            text-align: center; 
+        }
+        .card-info h3 { font-size: 16px; margin: 0; color: #333; }
+        .card-info .price { font-weight: bold; color: #555; margin: 0; font-size: 15px; }
+        /* Stil på "Lägg i varukorg"-knappen */
+        .add-to-cart-btn { 
+            background-color: var(--brand-teal); 
+            color: white; 
+            border: none; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            width: 100%; 
+            margin-top: 10px; 
+            transition: background-color 0.2s; 
+        }
+        .add-to-cart-btn:hover { background-color: #005a63; }
     </style>
 </head>
 <body>
 
     <header class="global-header">
         <div class="header-left">
+            <!-- Mobilmeny-knapp: öppnar och stänger mobilmenyn när skärmstorleken är liten -->
             <button class="custom-hamburger" onclick="const m=document.getElementById('mobile-menu'); m.style.display=m.style.display==='flex'?'none':'flex';">
                 <span></span><span></span><span></span>
             </button>
             <a href="ShoppingCart2.html" class="logo-cart">🛒</a>
-            <h1 class="restaurant-name">(Namn på vår resturang)</h1>
+            <h1 class="restaurant-name">Vår restaurang</h1>
         </div>
         
         <nav class="header-right">
             <a href="Slut.html">Home</a>
-            <!-- AKTIV PÅ FOOD -->
             <a href="index.html" class="btn-active-teal">Food</a>
             <a href="about.html">About us</a>
             <a href="Login.html" style="background-color: var(--brand-teal); color: white; font-style: normal;">Login</a>
         </nav>
 
+        <!-- Mobilnavigering visas endast när hamburgermenyn öppnas -->
         <div id="mobile-menu" class="mobile-nav">
             <a href="Slut.html">Home</a>
             <a href="index.html" style="color: var(--brand-teal);">Food</a>
@@ -62,60 +107,115 @@
         </div>
     </header>
 
+    
     <main>
-        <h2 class="section-title">Our Menu</h2>
+    <h2 class="section-title">Our Menu</h2>
+    
+    <div class="filter-buttons">
+        <button class="filter-btn active">Burgers</button>
+    </div>
+
+    <div class="menu-grid">
         
-        <div class="filter-buttons">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Pizza</button>
-            <button class="filter-btn">Burgers</button>
-            <button class="filter-btn">Salads</button>
-            <button class="filter-btn">Desserts</button>
+        <div class="menu-card" data-name="Classic Cheeseburger" data-price="99">
+            <img src="nedladdning.jpg" alt="Classic Cheeseburger" class="burger-img">
+            <div class="card-info">
+                <h3>Classic Cheeseburger</h3>
+                <p class="price">99 kr</p>
+                <button class="add-to-cart-btn">Lägg i varukorg</button>
+            </div>
         </div>
 
-        <div class="menu-grid">
-            <div class="menu-card"></div>
-            <div clas   s="menu-card"></div>
-            <div class="menu-card"></div>
-            <div class="menu-card"></div>
-            <div class="menu-card"></div>
-            <div class="menu-card"></div>
+        <div class="menu-card" data-name="BBQ Burger" data-price="109">
+            <img src="bbq.jpg" alt="BBQ Burger" class="burger-img">
+            <div class="card-info">
+                <h3>BBQ Burger</h3>
+                <p class="price">109 kr</p>
+                <button class="add-to-cart-btn">Lägg i varukorg</button>
+            </div>
         </div>
-    </main>
+
+        <div class="menu-card" data-name="Chicken Burger" data-price="105">
+            <img src="chicken.jpg" alt="Chicken Burger" class="burger-img">
+            <div class="card-info">
+                <h3>Chicken Burger</h3>
+                <p class="price">105 kr</p>
+                <button class="add-to-cart-btn">Lägg i varukorg</button>
+            </div>
+        </div>
+
+        <div class="menu-card" data-name="Double Cheeseburger" data-price="129">
+            <img src="dubble.jpg" alt="Double Cheeseburger" class="burger-img">
+            <div class="card-info">
+                <h3>Double Cheeseburger</h3>
+                <p class="price">129 kr</p>
+                <button class="add-to-cart-btn">Lägg i varukorg</button>
+            </div>
+        </div>
+
+    </div>
+</main>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-    // 1. Hitta inloggningsknappen i headern
-    const loginBtn = document.getElementById("loginHeaderBtn");
-    
-    // 2. Kontrollera om användaren har en token (är inloggad)
-    const token = localStorage.getItem("token");
+       // DOMContentLoaded garanterar att hela HTML-dokumentet är inläst innan vi börjar köra scriptet
+     document.addEventListener("DOMContentLoaded", () => {
+         
+            // --- 1. KOD FÖR INLOGGNING/UTLOGGNING ---
+            const loginBtn = document.getElementById("loginHeaderBtn");
+            
+            // Kollar i LocalStorage (webbläsarens minne) om det finns en inloggningstoken
+            const token = localStorage.getItem("token");
 
-    if (token) {
-        // 3. Om token finns: Ändra texten till Logga ut
-        loginBtn.textContent = "Logga ut";
-        loginBtn.href = "#"; // Gör så att den inte hoppar till Login.html direkt
-        
-        // 4. Lägg till en funktion så att man faktiskt loggas ut när man klickar
-        loginBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            
-            // Ta bort token från minnet
-            localStorage.removeItem("token");
-            
-            // Om du även har sparat adminAccess, ta bort den med
-            localStorage.removeItem("adminAccess");
-            
-            alert("Du har loggats ut!");
-            
-            // Ladda om sidan för att visa "Login" igen
-            window.location.reload();
+            // Om användaren redan är inloggad ändrar vi knappen från "Login" till "Logga ut"
+            if (token) {
+                loginBtn.textContent = "Logga ut";
+                loginBtn.href = "#"; 
+                
+                // Lyssnare som hanterar själva utloggningen
+                loginBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    // Rensar användarens data från minnet
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("adminAccess");
+                    alert("Du har loggats ut!");
+                    window.location.reload(); // Laddar om sidan
+                });
+            }
+
+            // --- 2. KOD FÖR ATT LÄGGA TILL I VARUKORG ---
+            // Letar upp alla knappar som heter "add-to-cart-btn"
+            const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", (e) => {
+                    // e.target.closest hittar hela maträttskortet som den klickade knappen ligger inuti
+                    const card = e.target.closest(".menu-card");
+                    
+                    // Hämtar namnet och priset från HTML-kodens 'data-'-attribut
+                    const name = card.getAttribute("data-name");
+                    const price = parseInt(card.getAttribute("data-price"));
+                    
+                    // Hämtar den nuvarande varukorgen från minnet. Är den tom skapas en ny tom lista (array) []
+                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    
+                    // Kollar om den specifika burgaren redan ligger i varukorgen
+                    const existingItem = cart.find(item => item.name === name);
+                    
+                    if (existingItem) {
+                        // Om den redan finns, ökar vi bara antalet (quantity) med 1
+                        existingItem.quantity += 1;
+                    } else {
+                        // Om den är helt ny lägger vi till den som ett nytt objekt i listan
+                        cart.push({ name: name, price: price, quantity: 1 });
+                    }
+                    
+                    // Sparar den uppdaterade listan tillbaka till LocalStorage så ShoppingCart2.html kan läsa den
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    
+                    alert(`${name} lades till i varukorgen!`);
+                });
+            });
         });
-    }
-});
     </script>
-
 </body>
 </html>
-
-
